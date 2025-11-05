@@ -1,0 +1,24 @@
+<form class="container py-5" action="#" method="post">
+  <h2>Book a Tutoring Session</h2>
+  <div class="mb-3">
+    <label class="form-label" for="student-name">Student Name</label>
+    <input id="student-name" name="studentName" type="text" class="form-control" required title="Student name" placeholder="Enter student name">
+  </div>
+  <div class="mb-3">
+    <label class="form-label" for="subject">Subject</label>
+    <select class="form-select" id="subject">
+      <option>Math</option>
+      <option>English</option>
+      <option>Science</option>
+    </select>
+  </div>
+  <div class="mb-3">
+    <label class="form-label" for="preferred-datetime">Preferred Date/Time</label>
+    <input id="preferred-datetime" name="preferredDateTime" type="datetime-local" class="form-control" title="Preferred date and time" placeholder="YYYY-MM-DDThh:mm">
+  </div>
+  <div class="mb-3">
+    <label class="form-label" for="additional-notes">Additional Notes</label>
+    <textarea id="additional-notes" name="additionalNotes" class="form-control" title="Additional notes" placeholder="Enter any additional notes"></textarea>
+  </div>
+  <button class="btn btn-primary" type="submit">Submit Request</button>
+</form>
