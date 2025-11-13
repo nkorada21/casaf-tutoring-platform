@@ -47,17 +47,40 @@
   </div>
 
   <!-- Mobile Menu -->
-  <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-gray-200">
-    <div class="flex flex-col space-y-4 px-6 py-4 font-semibold text-gray-700">
-      <a href="#home" class="hover:text-[#FF6600] transition">Home</a>
-      <a href="#tutors" class="hover:text-[#FF6600] transition">Tutors</a>
-      <a href="#how" class="hover:text-[#FF6600] transition">How It Works</a>
-      <a href="#contact" class="hover:text-[#FF6600] transition">Contact</a>
-      <a href="#request" class="bg-[#FF6600] text-white px-4 py-2 rounded-full hover:bg-[#e85a00] transition w-fit">
-        Request Tutor
-      </a>
-    </div>
+  <!-- Mobile Menu -->
+<div id="mobileMenu" class="hidden md:hidden bg-white border-t border-gray-200">
+  <div class="flex flex-col space-y-4 px-6 py-4 font-semibold text-gray-700">
+    <a href="#home" 
+       onclick="document.getElementById('mobileMenu').classList.add('hidden')"
+       class="hover:text-[#FF6600] transition">
+       Home
+    </a>
+
+    <a href="#tutors"
+       onclick="document.getElementById('mobileMenu').classList.add('hidden')"
+       class="hover:text-[#FF6600] transition">
+       Tutors
+    </a>
+
+    <a href="#how"
+       onclick="document.getElementById('mobileMenu').classList.add('hidden')"
+       class="hover:text-[#FF6600] transition">
+       How It Works
+    </a>
+
+    <a href="#contact"
+       onclick="document.getElementById('mobileMenu').classList.add('hidden')"
+       class="hover:text-[#FF6600] transition">
+       Contact
+    </a>
+
+    <a href="#request"
+       onclick="document.getElementById('mobileMenu').classList.add('hidden')"
+       class="bg-[#FF6600] text-white px-4 py-2 rounded-full hover:bg-[#e85a00] transition w-fit">
+       Request Tutor
+    </a>
   </div>
+</div>
 </nav>
 
     <!-- HERO SECTION -->
