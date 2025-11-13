@@ -1,0 +1,12 @@
+/* Global smooth scrolling for anchor links */
+html {
+  scroll-behavior: smooth;
+}
+
+/* You can add more custom styles here if needed later */
+/* Example: tweak form width on very small screens */
+@media (max-width: 400px) {
+  form#casafForm {
+    padding: 1.5rem;
+  }
+}
