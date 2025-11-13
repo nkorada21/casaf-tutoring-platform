@@ -18,29 +18,47 @@
   </div>
 
   <!--  Navbar Section -->
-  <nav class="bg-white shadow-md border-b border-gray-200 sticky top-0">
-    <div class="max-w-7xl mx-auto flex justify-between items-center px-6 lg:px-12 py-4">
+<nav class="bg-white shadow-md border-b border-gray-200 sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto flex justify-between items-center px-6 lg:px-12 py-4">
 
-      <!-- Brand / Logo -->
-      <h1 class="text-2xl font-extrabold text-[#003366]">
-        CASAF <span class="text-[#FF6600]">Tutoring</span>
-      </h1>
+    <!-- Brand / Logo -->
+    <h1 class="text-2xl font-extrabold text-[#003366]">
+      CASAF <span class="text-[#FF6600]">Tutoring</span>
+    </h1>
 
-      <!-- Menu Links -->
-      <div class="hidden md:flex space-x-8 font-semibold text-gray-700">
-        <a href="#home" class="hover:text-[#FF6600] transition">Home</a>
-        <a href="#tutors" class="hover:text-[#FF6600] transition">Tutors</a>
-        <a href="#how" class="hover:text-[#FF6600] transition">How It Works</a>
-        <a href="#contact" class="hover:text-[#FF6600] transition">Contact</a>
-        <a href="#request" class="bg-[#FF6600] text-white px-5 py-2 rounded-full hover:bg-[#e85a00] transition">
-          Request Tutor
-        </a>
-      </div>
-
-      <!-- Mobile Button (for later use) -->
-      <button class="md:hidden text-[#003366] text-2xl">☰</button>
+    <!-- Desktop Menu -->
+    <div class="hidden md:flex space-x-8 font-semibold text-gray-700">
+      <a href="#home" class="hover:text-[#FF6600] transition">Home</a>
+      <a href="#tutors" class="hover:text-[#FF6600] transition">Tutors</a>
+      <a href="#how" class="hover:text-[#FF6600] transition">How It Works</a>
+      <a href="#contact" class="hover:text-[#FF6600] transition">Contact</a>
+      <a href="#request" class="bg-[#FF6600] text-white px-5 py-2 rounded-full hover:bg-[#e85a00] transition">
+        Request Tutor
+      </a>
     </div>
-  </nav>
+
+    <!-- Mobile Hamburger Button -->
+    <button 
+      class="md:hidden text-[#003366] text-3xl"
+      onclick="document.getElementById('mobileMenu').classList.toggle('hidden')"
+    >
+      ☰
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-gray-200">
+    <div class="flex flex-col space-y-4 px-6 py-4 font-semibold text-gray-700">
+      <a href="#home" class="hover:text-[#FF6600] transition">Home</a>
+      <a href="#tutors" class="hover:text-[#FF6600] transition">Tutors</a>
+      <a href="#how" class="hover:text-[#FF6600] transition">How It Works</a>
+      <a href="#contact" class="hover:text-[#FF6600] transition">Contact</a>
+      <a href="#request" class="bg-[#FF6600] text-white px-4 py-2 rounded-full hover:bg-[#e85a00] transition w-fit">
+        Request Tutor
+      </a>
+    </div>
+  </div>
+</nav>
 
     <!-- HERO SECTION -->
   <section id="home" class="bg-white py-20">
