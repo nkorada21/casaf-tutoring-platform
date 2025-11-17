@@ -16,7 +16,7 @@
 <body class="font-sans bg-gray-50 text-gray-900">
 
   <!-- Top Info Bar -->
-  <div class="bg-[#003366] text-white text-center text-sm py-2 font-medium shadow-sm">
+  <div id="topBar" class="bg-[#003366] text-white text-center text-sm py-2 font-medium shadow-sm">
     Call anytime: <b>(+237) 675 31 61 71</b> |
     CASAF Students Rated Us ★★★★★ on TrustAcademy
   </div>
@@ -32,14 +32,28 @@
 
       <!-- Desktop Menu -->
       <div class="hidden md:flex space-x-8 font-semibold text-gray-700">
-        <a href="#home" class="hover:text-[#FF6600] transition">Home</a>
-        <a href="#tutors" class="hover:text-[#FF6600] transition">Tutors</a>
-        <a href="#how" class="hover:text-[#FF6600] transition">How It Works</a>
-        <a href="#contact" class="hover:text-[#FF6600] transition">Contact</a>
-        <a href="#request"
+        <a id="navHome" href="#home" class="hover:text-[#FF6600] transition">Home</a>
+        <a id="navTutors" href="#tutors" class="hover:text-[#FF6600] transition">Tutors</a>
+        <a id="navHow" href="#how" class="hover:text-[#FF6600] transition">How It Works</a>
+        <a id="navContact" href="#contact" class="hover:text-[#FF6600] transition">Contact</a>
+        <a id="navRequest" href="#request"
           class="bg-[#FF6600] text-white px-5 py-2 rounded-full hover:bg-[#e85a00] transition">
           Request Tutor
         </a>
+
+        <!-- LANGUAGE SWITCHER -->
+  <label for="langSwitcher" class="sr-only">Language</label>
+  <select
+  id="langSwitcher"
+  aria-label="Language"
+  class="border border-gray-300 rounded-lg px-2 py-1 text-sm bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#FF6600]"
+>
+  <option value="en">English</option>
+  <option value="fr">Français</option>
+  <option value="pg">Pidgin</option>
+  <option value="ha">Hausa</option>
+  <option value="ff">Fulfulde</option>
+</select>
       </div>
 
       <!-- Mobile Hamburger Button -->
@@ -69,26 +83,21 @@
 
       <!-- LEFT CONTENT -->
       <div class="flex-1 space-y-6 text-center md:text-left">
-        <h2 class="text-4xl md:text-5xl font-extrabold text-[#003366] leading-tight">
-          CASAF <span class="text-[#FF6600]">Tutoring</span> Gets Results
-        </h2>
+        <h2 id="heroTitle" class="text-4xl md:text-5xl font-extrabold text-[#003366] leading-tight">
+    CASAF Tutoring - Helping Students Succeed
+  </h2>
 
-        <p class="text-gray-700 text-lg max-w-lg mx-auto md:mx-0 leading-relaxed">
-          Our tutors help students achieve <b>life-changing success</b>.
-          We reduce stress, build confidence, and accelerate learning outcomes.
-          Over <b>90%</b> of CASAF students improve their grades and reach their goals.
-        </p>
+      <p id="heroDesc" class="text-gray-700 text-lg max-w-lg mx-auto md:mx-0 leading-relaxed">
+  We support learners from primary school to university with personalised lessons,
+  exam preparation, and confidence-building academic support.
+</p>
 
         <!-- CTA BUTTONS -->
         <div class="flex justify-center md:justify-start gap-4">
-          <a href="#tutors"
-            class="bg-gray-200 text-gray-800 px-6 py-3 rounded-full font-semibold hover:bg-gray-300 transition">
-            Find Tutors →
-          </a>
-          <a href="#request"
-            class="bg-[#FF6600] text-white px-6 py-3 rounded-full font-semibold hover:bg-[#e85a00] transition">
-            Request Tutor →
-          </a>
+          <a id="findTutorBtn" href="#tutors" class="bg-gray-200 text-gray-800 px-6 py-3 rounded-full font-semibold hover:bg-gray-300 transition">
+            Find a Tutor → </a>
+          <a id="requestTutorBtn" href="#request" class="bg-[#FF6600] text-white px-6 py-3 rounded-full font-semibold hover:bg-[#e85a00] transition">
+            Request Help → </a>
         </div>
       </div>
 
@@ -142,11 +151,13 @@
 <!-- TUTOR DIRECTORY SECTION -->
 <section id="tutors" class="bg-gray-50 py-20">
   <div class="max-w-6xl mx-auto px-6 text-center">
-    <h2 class="text-3xl md:text-4xl font-bold text-[#003366] mb-10">
+    <h2
+      id="tutorsTitle"
+      class="text-3xl md:text-4xl font-bold text-[#003366] mb-10"
+    >
       Find the Perfect CASAF Tutor
     </h2>
 
-    <!-- SEARCH INPUT -->
     <div class="mb-12 flex justify-center">
       <input
         type="text"
@@ -168,9 +179,8 @@
     <div class="max-w-7xl mx-auto px-6 lg:px-12 text-center">
 
       <!-- SECTION TITLE -->
-      <h2 class="text-3xl md:text-4xl font-bold text-[#003366] mb-12">
-        How CASAF Tutoring Works
-      </h2>
+      <h2 id="howTitle" class="text-3xl md:text-4xl font-bold text-[#003366] mb-12">
+        How CASAF Tutoring Works </h2>
 
       <!-- STEPS GRID -->
       <div class="grid md:grid-cols-3 gap-10">
@@ -179,8 +189,8 @@
         <div
           class="bg-white p-8 rounded-3xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1">
           <div class="text-4xl text-[#FF6600] font-bold mb-4">1</div>
-          <h3 class="text-xl font-semibold text-[#003366] mb-2">Tell Us Your Goals</h3>
-          <p class="text-gray-600 leading-relaxed">
+          <h3 id="howStep1Title" class="text-xl font-semibold text-[#003366] mb-2">Tell Us Your Goals</h3>
+          <p id="howStep1Text" class="text-gray-600 leading-relaxed">
             Share your academic goals and subjects — we’ll match you with the perfect tutor
             who fits your learning style.
           </p>
@@ -190,8 +200,8 @@
         <div
           class="bg-white p-8 rounded-3xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1">
           <div class="text-4xl text-[#FF6600] font-bold mb-4">2</div>
-          <h3 class="text-xl font-semibold text-[#003366] mb-2">Meet Your Tutor</h3>
-          <p class="text-gray-600 leading-relaxed">
+          <h3 id="howStep2Title" class="text-xl font-semibold text-[#003366] mb-2">Meet Your Tutor</h3>
+          <p id="howStep2Text" class="text-gray-600 leading-relaxed">
             Connect with verified CASAF tutors through online or in-person sessions that
             match your schedule.
           </p>
@@ -201,8 +211,8 @@
         <div
           class="bg-white p-8 rounded-3xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1">
           <div class="text-4xl text-[#FF6600] font-bold mb-4">3</div>
-          <h3 class="text-xl font-semibold text-[#003366] mb-2">Track Your Progress</h3>
-          <p class="text-gray-600 leading-relaxed">
+          <h3 id="howStep3Title" class="text-xl font-semibold text-[#003366] mb-2">Track Your Progress</h3>
+          <p id="howStep3Text" class="text-gray-600 leading-relaxed">
             Monitor sessions and performance using your CASAF student dashboard and reports.
           </p>
         </div>
@@ -213,14 +223,14 @@
   <!-- REQUEST TUTOR (simple anchor target for now) -->
   <section id="request" class="bg-white py-16 border-t border-gray-200">
     <div class="max-w-3xl mx-auto px-6 text-center">
-      <h2 class="text-3xl md:text-4xl font-bold text-[#003366] mb-4">
+      <h2 id="requestTitle" class="text-3xl md:text-4xl font-bold text-[#003366] mb-4">
         Request a CASAF Tutor
       </h2>
-      <p class="text-gray-600 mb-6">
+      <p id="requestText" class="text-gray-600 mb-6">
         Use the contact form below to tell us about your needs. Our team will connect you
         with the most suitable CASAF tutor for your subject and level.
       </p>
-      <a href="#contact-form"
+      <a id="requestBtn" href="#contact-form"
         class="inline-block bg-[#FF6600] text-white font-semibold px-8 py-3 rounded-full hover:bg-[#e85a00] transition">
         Go to Contact Form
       </a>
@@ -233,7 +243,7 @@
     <div class="max-w-7xl mx-auto px-6 lg:px-12 text-center">
 
       <!-- TITLE -->
-      <h2 class="text-3xl md:text-4xl font-bold text-[#003366] mb-12">
+      <h2 id="topTutorsTitle" class="text-3xl md:text-4xl font-bold text-[#003366] mb-12">
         Meet Our Top Tutors
       </h2>
 
@@ -289,8 +299,8 @@
 
       <!-- ABOUT CASAF -->
       <div>
-        <h3 class="text-xl font-bold mb-3 text-[#FF6600]">CASAF Tutoring</h3>
-        <p class="text-sm leading-relaxed text-gray-200">
+        <h3 id="footerAboutTitle" class="text-xl font-bold mb-3 text-[#FF6600]">CASAF Tutoring</h3>
+        <p id="footerAboutText" class="text-sm leading-relaxed text-gray-200">
           CASAF Tutoring empowers students across Africa by connecting them with
           experienced mentors who inspire confidence, improve grades, and help achieve
           life-changing academic goals.
@@ -299,19 +309,19 @@
 
       <!-- QUICK LINKS -->
       <div>
-        <h3 class="text-xl font-bold mb-3 text-[#FF6600]">Quick Links</h3>
+        <h3 id="footerLinksTitle" class="text-xl font-bold mb-3 text-[#FF6600]">Quick Links</h3>
         <ul class="space-y-2 text-sm">
-          <li><a href="#home" class="hover:underline hover:text-[#FF6600]">Home</a></li>
-          <li><a href="#tutors" class="hover:underline hover:text-[#FF6600]">Tutors</a></li>
-          <li><a href="#how" class="hover:underline hover:text-[#FF6600]">How It Works</a></li>
-          <li><a href="#request" class="hover:underline hover:text-[#FF6600]">Request Tutor</a></li>
-          <li><a href="#contact-form" class="hover:underline hover:text-[#FF6600]">Contact</a></li>
+          <li><a id="footerHomeLink" href="#home" class="hover:underline hover:text-[#FF6600]">Home</a></li>
+          <li><a id="footerTutorsLink" href="#tutors" class="hover:underline hover:text-[#FF6600]">Tutors</a></li>
+          <li><a id="footerHowLink" href="#how" class="hover:underline hover:text-[#FF6600]">How It Works</a></li>
+          <li><a id="footerRequestLink" href="#request" class="hover:underline hover:text-[#FF6600]">Request Tutor</a></li>
+          <li><a id="footerContactLink" href="#contact-form" class="hover:underline hover:text-[#FF6600]">Contact</a></li>
         </ul>
       </div>
 
       <!-- CONTACT INFO -->
       <div>
-        <h3 class="text-xl font-bold mb-3 text-[#FF6600]">Contact Us</h3>
+        <h3 id="footerContactTitle" class="text-xl font-bold mb-3 text-[#FF6600]">Contact Us</h3>
         <p class="text-sm text-gray-200">
           📍 Adamou street, adjacent to TECNO shop, New Town, Limbe, Cameroon
         </p>
@@ -332,10 +342,10 @@
       <div class="max-w-4xl mx-auto px-6 text-center">
 
         <!-- TITLE -->
-        <h2 class="text-3xl md:text-4xl font-bold text-[#003366] mb-6">
+        <h2 id="contactTitle" class="text-3xl md:text-4xl font-bold text-[#003366] mb-6">
           Get in Touch With CASAF Tutoring
         </h2>
-        <p class="text-gray-600 mb-10">
+        <p id="contactText" class="text-gray-600 mb-10">
           Have questions or want to request a tutor? Fill out the form below and our team will contact you shortly.
         </p>
 
@@ -344,7 +354,7 @@
           class="bg-white rounded-2xl shadow-lg p-8 text-left space-y-6">
           <!-- Name -->
           <div>
-            <label class="block text-gray-700 font-semibold mb-2">Full Name</label>
+            <label id="contactLabelName" class="block text-gray-700 font-semibold mb-2">Full Name</label>
             <input type="text" name="name" placeholder="Enter your name"
               class="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#FF6600]"
               required />
@@ -352,7 +362,7 @@
 
           <!-- Email -->
           <div>
-            <label class="block text-gray-700 font-semibold mb-2">Email Address</label>
+            <label id="contactLabelEmail" class="block text-gray-700 font-semibold mb-2">Email Address</label>
             <input type="email" name="email" placeholder="example@email.com"
               class="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#FF6600]"
               required />
@@ -360,14 +370,14 @@
 
           <!-- Message -->
           <div>
-            <label class="block text-gray-700 font-semibold mb-2">Message</label>
+            <label id="contactLabelMessage" class="block text-gray-700 font-semibold mb-2">Message</label>
             <textarea name="message" placeholder="Type your message here..." rows="4"
               class="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#FF6600]"
               required></textarea>
           </div>
 
           <!-- Submit Button -->
-          <button type="submit"
+          <button id="contactSubmitBtn" type="submit"
             class="w-full bg-[#FF6600] text-white font-semibold py-3 rounded-lg hover:bg-[#e85a00] transition">
             Send Message
           </button>
@@ -389,6 +399,9 @@
   <!-- Main Script -->
   <script src="js/data.js"></script>
   <script src="js/script.js"></script>
+
+  <script src="js/translations.js"></script>
+  <script src="js/language.js"></script>
 </body>
 
 </html>
