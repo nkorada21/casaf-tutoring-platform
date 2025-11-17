@@ -68,3 +68,44 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+// Access HTML Elements
+const tutorGrid = document.getElementById("tutorGrid");
+const searchInput = document.getElementById("searchInput");
+
+// Function to Display Tutors
+function displayTutors(list) {
+  tutorGrid.innerHTML = "";
+  list.forEach((tutor) => {
+    const card = document.createElement("div");
+    card.className = "bg-white rounded-3xl shadow-lg overflow-hidden hover:-translate-y-1 transition transform";
+    card.innerHTML = `
+      <img src="${tutor.img}" alt="${tutor.name}" class="w-full h-56 object-cover">
+      <div class="p-6 text-left">
+        <h3 class="text-lg font-bold text-gray-900">${tutor.name}</h3>
+        <p class="text-sm text-gray-600 mb-1">${tutor.hours} Hours Taught</p>
+        <p class="text-sm text-gray-700 mb-1"><strong>Subject:</strong> ${tutor.subject}</p>
+        <p class="text-sm text-gray-700">${tutor.bio}</p>
+        <a href="tutor.html?id=${tutor.id}" 
+           class="inline-block mt-3 text-[#FF6600] font-semibold hover:underline">
+           View Profile →
+        </a>
+      </div>
+    `;
+    tutorGrid.appendChild(card);
+  });
+}
+
+// Initial Load
+displayTutors(tutors);
+
+// Search Filter
+searchInput.addEventListener("input", (e) => {
+  const search = e.target.value.toLowerCase();
+  const filtered = tutors.filter(
+    (tutor) =>
+      tutor.name.toLowerCase().includes(search) ||
+      tutor.subject.toLowerCase().includes(search)
+  );
+  displayTutors(filtered);
+});
