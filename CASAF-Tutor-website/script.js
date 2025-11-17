@@ -41,11 +41,11 @@ document.addEventListener("DOMContentLoaded", () => {
         formMessage.classList.add("text-green-600");
 
         if (response.ok) {
-          formMessage.textContent = "✅ Message sent successfully!";
+          formMessage.textContent = "Message sent successfully!";
           formMessage.classList.remove("hidden");
           form.reset();
         } else {
-          formMessage.textContent = "⚠️ Something went wrong. Try again later.";
+          formMessage.textContent = "Something went wrong. Try again later.";
           formMessage.classList.remove("hidden");
           formMessage.classList.remove("text-green-600");
           formMessage.classList.add("text-red-600");
@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
           formMessage.classList.add("hidden");
         }, 4000);
       } catch (error) {
-        formMessage.textContent = "❌ Network error. Please try again.";
+        formMessage.textContent = "Network error. Please try again.";
         formMessage.classList.remove("hidden");
         formMessage.classList.remove("text-green-600");
         formMessage.classList.add("text-red-600");
