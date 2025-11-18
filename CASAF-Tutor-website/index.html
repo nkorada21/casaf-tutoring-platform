@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,55 +8,84 @@
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="./style.css" />
+  <!-- Custom CSS (optional extra styles) -->
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body class="font-sans bg-gray-50 text-gray-900">
 
-  <!-- Top Info Bar -->
-  <div id="topBar" class="bg-[#003366] text-white text-center text-sm py-2 font-medium shadow-sm">
+  <!-- ===================== TOP INFO BAR ===================== -->
+  <div id="topBar" class="bg-[#003366] text-white text-center text-[11px] sm:text-sm py-2 font-medium shadow-sm">
     Call anytime: <b>(+237) 675 31 61 71</b> |
     CASAF Students Rated Us ★★★★★ on TrustAcademy
   </div>
 
-  <!-- Navbar Section -->
+  <!-- ===================== NAVBAR ===================== -->
   <nav class="bg-white shadow-md border-b border-gray-200 sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto flex justify-between items-center px-6 lg:px-12 py-4">
+    <div class="max-w-7xl mx-auto flex justify-between items-center px-4 sm:px-6 lg:px-12 py-3 md:py-4">
 
       <!-- Brand / Logo -->
-      <h1 class="text-2xl font-extrabold text-[#003366] tracking-tight">
-        CASAF <span class="text-[#FF6600]">Tutoring</span>
-      </h1>
+      <a href="index.html" class="flex items-center gap-2">
+        <div class="w-9 h-9 rounded-full bg-[#FF6600]/10 flex items-center justify-center">
+          <span class="text-xl font-extrabold text-[#FF6600]">C</span>
+        </div>
+        <span class="text-xl sm:text-2xl font-extrabold text-[#003366] tracking-tight">
+          CASAF <span class="text-[#FF6600]">Tutoring</span>
+        </span>
+      </a>
 
       <!-- Desktop Menu -->
-      <div class="hidden md:flex space-x-8 font-semibold text-gray-700">
-        <a id="navHome" href="#home" class="hover:text-[#FF6600] transition">Home</a>
-        <a id="navTutors" href="#tutors" class="hover:text-[#FF6600] transition">Tutors</a>
-        <a id="navHow" href="#how" class="hover:text-[#FF6600] transition">How It Works</a>
-        <a id="navContact" href="#contact" class="hover:text-[#FF6600] transition">Contact</a>
-        <a id="navRequest" href="#request"
-          class="bg-[#FF6600] text-white px-5 py-2 rounded-full hover:bg-[#e85a00] transition">
+      <div class="hidden md:flex items-center gap-6 font-semibold text-gray-700">
+
+        <a id="navHome" href="index.html" class="hover:text-[#FF6600] transition">
+          Home
+        </a>
+
+        <a id="navTutors" href="find-tutor.html" class="hover:text-[#FF6600] transition">
+          Find a Tutor
+        </a>
+
+        <a id="navHow" href="#services" class="hover:text-[#FF6600] transition">
+          How It Works
+        </a>
+
+        <a id="navContact" href="#contact-section" class="hover:text-[#FF6600] transition">
+          Contact
+        </a>
+
+        <!-- Become a Tutor -->
+      <a href="become-tutor.html" class="px-4 py-2 rounded-full border border-[#003366] text-[#003366] hover:bg-[#003366] hover:text-white transition">
+        Become a Tutor
+      </a>
+
+        <a id="navRequest"
+           href="request.html"
+           class="bg-[#FF6600] text-white px-5 py-2 rounded-full shadow-md hover:bg-[#e85a00] transition">
           Request Tutor
         </a>
 
-        <!-- LANGUAGE SWITCHER -->
-  <label for="langSwitcher" class="sr-only">Language</label>
-  <select
-  id="langSwitcher"
-  aria-label="Language"
-  class="border border-gray-300 rounded-lg px-2 py-1 text-sm bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#FF6600]"
->
-  <option value="en">English</option>
-  <option value="fr">Français</option>
-  <option value="pg">Pidgin</option>
-  <option value="ha">Hausa</option>
-  <option value="ff">Fulfulde</option>
-</select>
+        <!-- Language Switcher -->
+        <label for="langSwitcher" class="sr-only">Language</label>
+        <select
+          id="langSwitcher"
+          aria-label="Language"
+          class="border border-gray-300 rounded-lg px-2 py-1 text-sm bg-white text-gray-700
+                 focus:outline-none focus:ring-2 focus:ring-[#FF6600]"
+        >
+          <option value="en">EN</option>
+          <option value="fr">FR</option>
+          <option value="pg">Pidgin</option>
+          <option value="ha">Hausa</option>
+          <option value="ff">Fulfulde</option>
+        </select>
       </div>
 
       <!-- Mobile Hamburger Button -->
-      <button id="menuToggle" class="md:hidden text-[#003366] text-3xl" aria-label="Toggle navigation menu">
+      <button
+        id="menuToggle"
+        class="md:hidden text-[#003366] text-3xl"
+        aria-label="Toggle navigation menu"
+      >
         ☰
       </button>
     </div>
@@ -65,343 +93,339 @@
     <!-- Mobile Menu -->
     <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-gray-200">
       <div class="flex flex-col space-y-4 px-6 py-4 font-semibold text-gray-700">
-        <a href="#home" class="hover:text-[#FF6600] transition">Home</a>
-        <a href="#tutors" class="hover:text-[#FF6600] transition">Tutors</a>
-        <a href="#how" class="hover:text-[#FF6600] transition">How It Works</a>
-        <a href="#contact" class="hover:text-[#FF6600] transition">Contact</a>
-        <a href="#request"
-          class="bg-[#FF6600] text-white px-4 py-2 rounded-full hover:bg-[#e85a00] transition w-fit">
+        <a href="index.html" class="hover:text-[#FF6600] transition">Home</a>
+        <a href="find-tutor.html" class="hover:text-[#FF6600] transition">Find a Tutor</a>
+        <a href="#services" class="hover:text-[#FF6600] transition">How It Works</a>
+        <a href="#contact-section" class="hover:text-[#FF6600] transition">Contact</a>
+        <a href="request.html"
+           class="bg-[#FF6600] text-white px-4 py-2 rounded-full shadow-md hover:bg-[#e85a00] transition w-fit">
           Request Tutor
         </a>
       </div>
     </div>
   </nav>
 
-  <!-- HERO SECTION -->
-  <section id="home" class="bg-white py-20">
-    <div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col md:flex-row items-center justify-between gap-12">
+  <!-- ===================== HERO SECTION ===================== -->
+  <section class="bg-white py-20">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12 grid md:grid-cols-2 gap-16 items-center">
 
-      <!-- LEFT CONTENT -->
-      <div class="flex-1 space-y-6 text-center md:text-left">
-        <h2 id="heroTitle" class="text-4xl md:text-5xl font-extrabold text-[#003366] leading-tight">
-    CASAF Tutoring - Helping Students Succeed
-  </h2>
+    <!-- LEFT CONTENT -->
+    <div class="space-y-6">
+      <h1 class="text-4xl sm:text-5xl font-extrabold text-[#0A2E5C] leading-tight">
+        CASAF Tutoring - <br />
+        Helping Students <br />
+        Succeed
+      </h1>
 
-      <p id="heroDesc" class="text-gray-700 text-lg max-w-lg mx-auto md:mx-0 leading-relaxed">
-  We support learners from primary school to university with personalised lessons,
-  exam preparation, and confidence-building academic support.
-</p>
+      <p class="text-gray-600 text-lg leading-relaxed max-w-xl">
+        We support learners from primary school to university with personalised 
+        lessons, exam preparation, and confidence-building academic support.
+      </p>
 
-        <!-- CTA BUTTONS -->
-        <div class="flex justify-center md:justify-start gap-4">
-          <a id="findTutorBtn" href="#tutors" class="bg-gray-200 text-gray-800 px-6 py-3 rounded-full font-semibold hover:bg-gray-300 transition">
-            Find a Tutor → </a>
-          <a id="requestTutorBtn" href="#request" class="bg-[#FF6600] text-white px-6 py-3 rounded-full font-semibold hover:bg-[#e85a00] transition">
-            Request Help → </a>
-        </div>
+      <div class="flex gap-4 pt-2">
+        <a
+          href="find-tutor.html"
+          class="bg-gray-100 text-[#0A2E5C] px-6 py-3 rounded-full font-medium shadow-sm
+                hover:bg-gray-200 transition"
+        >
+          Find a Tutor →
+        </a>
+
+        <a
+          href="request.html"
+          class="bg-[#FF6600] text-white px-6 py-3 rounded-full font-medium shadow-md
+                hover:bg-[#e65a00] transition"
+        >
+          Request Help →
+        </a>
       </div>
 
-      <!-- RIGHT SIDE STACKED TUTOR CARDS -->
-      <div class="flex-1 relative flex justify-center items-center mt-10 md:mt-0">
-
-        <!-- Card 1 (Back Left) -->
-        <div
-          class="absolute w-60 h-80 bg-white rounded-3xl rotate-[-10deg] shadow-md top-6 left-4 overflow-hidden hidden sm:block">
-          <img
-            src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=800&q=80"
-            alt="Mr. James Carter" class="w-full h-48 object-cover" />
-          <div class="p-4">
-            <h3 class="text-md font-bold text-[#003366]">Mr. James Carter</h3>
-            <p class="text-sm text-gray-600 mb-1">MSc, Physics</p>
-            <p class="text-sm text-gray-700">8+ years tutoring high-school and college students.</p>
-          </div>
-        </div>
-
-        <!-- Card 2 (Middle) -->
-        <div
-          class="absolute w-60 h-80 bg-white rounded-3xl rotate-[5deg] shadow-lg top-3 right-4 overflow-hidden hidden sm:block">
-          <img
-            src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80"
-            alt="Ms. Claire Wong" class="w-full h-48 object-cover" />
-          <div class="p-4">
-            <h3 class="text-md font-bold text-[#003366]">Ms. Claire Wong</h3>
-            <p class="text-sm text-gray-600 mb-1">MBA, Economics</p>
-            <p class="text-sm text-gray-700">Experienced tutor in Business and Management courses.</p>
-          </div>
-        </div>
-
-        <!-- Card 3 (Front Main) -->
-        <div class="relative w-64 h-80 bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-100">
-          <img
-            src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&w=800&q=80"
-            alt="Dr. Bianca" class="w-full h-48 object-cover" />
-          <div class="p-5">
-            <h3 class="text-lg font-bold text-[#003366]">Dr. Bianca</h3>
-            <p class="text-sm text-gray-600 mb-1">2621 Hours Taught</p>
-            <p class="text-sm text-gray-700 leading-snug">
-              Experienced CASAF tutor with a PhD in Education and over 10 years of mentoring experience.
-            </p>
-            <div class="absolute top-4 right-4 text-[#FF6600] font-bold text-xl">★</div>
-          </div>
-        </div>
+      <div class="flex flex-col sm:flex-row gap-3 pt-4 text-gray-600 text-sm">
+        <span>Over <b>90%</b> of CASAF students improve their grades.</span>
+        <span class="hidden sm:block w-px bg-gray-300"></span>
+        <span>Trusted by families and universities across Cameroon.</span>
       </div>
     </div>
-  </section>
 
-<!-- TUTOR DIRECTORY SECTION -->
-<section id="tutors" class="bg-gray-50 py-20">
-  <div class="max-w-6xl mx-auto px-6 text-center">
-    <h2
-      id="tutorsTitle"
-      class="text-3xl md:text-4xl font-bold text-[#003366] mb-10"
-    >
-      Find the Perfect CASAF Tutor
-    </h2>
+<!-- RIGHT: STACKED TUTOR CARDS -->
+<div class="flex-1 relative flex justify-center items-center mt-4 md:mt-0 h-[350px]">
 
-    <div class="mb-12 flex justify-center">
-      <input
-        type="text"
-        id="searchInput"
-        placeholder="Search by name or subject..."
-        class="w-full md:w-1/2 border border-gray-300 rounded-full px-5 py-3 focus:outline-none focus:ring-2 focus:ring-[#FF6600]"
-      />
+  <!-- LEFT CARD -->
+  <div
+    class="absolute w-52 h-72 bg-white rounded-3xl shadow-md rotate-[-12deg]
+          -left-10 top-10 overflow-hidden hidden sm:block"
+  >
+    <img
+      src="assets/tutors/tutor-physics.jpg"
+      class="w-full h-40 object-cover"
+      alt="Physics tutor"
+    />
+    <div class="p-4">
+      <h3 class="text-sm font-bold text-[#003366]">Mr. Daniel</h3>
+      <p class="text-xs text-gray-600">Physics & Mathematics</p>
     </div>
+  </div>
 
-    <!-- TUTOR CARDS GRID -->
-    <div id="tutorGrid" class="grid md:grid-cols-3 gap-8">
-      <!-- Cards will load dynamically via JS -->
+  <!-- CENTER MAIN CARD -->
+  <div
+    class="w-56 h-80 bg-white rounded-3xl shadow-2xl overflow-hidden
+          border border-gray-100 z-20"
+  >
+    <img
+      src="assets/tutors/tutor-main.jpg"
+      class="w-full h-44 object-cover"
+      alt="Featured CASAF tutor"
+    />
+
+    <div class="p-5 relative">
+      <span class="absolute top-3 right-3 text-[#FF6600]">★</span>
+
+      <h3 class="text-lg font-bold text-[#003366]">Dr. Rose</h3>
+      <p class="text-sm text-gray-600 mb-2">2,100+ Hours Taught</p>
+      <p class="text-xs text-gray-700">
+        Dedicated CASAF tutor helping science students reach scholarship-level results.
+      </p>
+    </div>
+  </div>
+
+  <!-- RIGHT CARD -->
+  <div
+    class="absolute w-52 h-72 bg-white rounded-3xl shadow-md rotate-[10deg]
+          -right-10 top-10 overflow-hidden hidden sm:block"
+  >
+    <img
+      src="assets/tutors/tutor-language.jpg"
+      class="w-full h-40 object-cover"
+      alt="Language tutor"
+    />
+    <div class="p-4">
+      <h3 class="text-sm font-bold text-[#003366]">Ms. Clarisse</h3>
+      <p class="text-xs text-gray-600">English & French</p>
     </div>
   </div>
 </section>
 
-  <!-- HOW IT WORKS SECTION -->
-  <section id="how" class="bg-gray-50 py-20 border-t border-gray-200">
-    <div class="max-w-7xl mx-auto px-6 lg:px-12 text-center">
+  <!-- ===================== SERVICES SECTION ===================== -->
+  <section id="services" class="bg-gray-50 py-16 border-t border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 text-center">
 
-      <!-- SECTION TITLE -->
-      <h2 id="howTitle" class="text-3xl md:text-4xl font-bold text-[#003366] mb-12">
-        How CASAF Tutoring Works </h2>
-
-      <!-- STEPS GRID -->
-      <div class="grid md:grid-cols-3 gap-10">
-
-        <!-- STEP 1 -->
-        <div
-          class="bg-white p-8 rounded-3xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1">
-          <div class="text-4xl text-[#FF6600] font-bold mb-4">1</div>
-          <h3 id="howStep1Title" class="text-xl font-semibold text-[#003366] mb-2">Tell Us Your Goals</h3>
-          <p id="howStep1Text" class="text-gray-600 leading-relaxed">
-            Share your academic goals and subjects — we’ll match you with the perfect tutor
-            who fits your learning style.
-          </p>
-        </div>
-
-        <!-- STEP 2 -->
-        <div
-          class="bg-white p-8 rounded-3xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1">
-          <div class="text-4xl text-[#FF6600] font-bold mb-4">2</div>
-          <h3 id="howStep2Title" class="text-xl font-semibold text-[#003366] mb-2">Meet Your Tutor</h3>
-          <p id="howStep2Text" class="text-gray-600 leading-relaxed">
-            Connect with verified CASAF tutors through online or in-person sessions that
-            match your schedule.
-          </p>
-        </div>
-
-        <!-- STEP 3 -->
-        <div
-          class="bg-white p-8 rounded-3xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1">
-          <div class="text-4xl text-[#FF6600] font-bold mb-4">3</div>
-          <h3 id="howStep3Title" class="text-xl font-semibold text-[#003366] mb-2">Track Your Progress</h3>
-          <p id="howStep3Text" class="text-gray-600 leading-relaxed">
-            Monitor sessions and performance using your CASAF student dashboard and reports.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- REQUEST TUTOR (simple anchor target for now) -->
-  <section id="request" class="bg-white py-16 border-t border-gray-200">
-    <div class="max-w-3xl mx-auto px-6 text-center">
-      <h2 id="requestTitle" class="text-3xl md:text-4xl font-bold text-[#003366] mb-4">
-        Request a CASAF Tutor
+      <h2 class="text-3xl md:text-4xl font-bold text-[#003366] mb-4">
+        Our Services
       </h2>
-      <p id="requestText" class="text-gray-600 mb-6">
-        Use the contact form below to tell us about your needs. Our team will connect you
-        with the most suitable CASAF tutor for your subject and level.
+      <p class="text-gray-600 max-w-2xl mx-auto mb-10 text-sm sm:text-base">
+        CASAF Tutoring connects learners with trusted tutors for school support,
+        exams, and university preparation – online and in person.
       </p>
-      <a id="requestBtn" href="#contact-form"
-        class="inline-block bg-[#FF6600] text-white font-semibold px-8 py-3 rounded-full hover:bg-[#e85a00] transition">
-        Go to Contact Form
-      </a>
-    </div>
-  </section>
 
-
-  <!-- MEET OUR TOP TUTORS SECTION -->
-  <section id="tutors" class="bg-white py-20 border-t border-gray-200">
-    <div class="max-w-7xl mx-auto px-6 lg:px-12 text-center">
-
-      <!-- TITLE -->
-      <h2 id="topTutorsTitle" class="text-3xl md:text-4xl font-bold text-[#003366] mb-12">
-        Meet Our Top Tutors
-      </h2>
-
-      <!-- TUTORS GRID -->
       <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
 
-        <!-- Tutor 1 -->
+        <!-- Service 1 -->
         <div
-          class="bg-gray-50 rounded-3xl shadow-md hover:shadow-xl overflow-hidden transition transform hover:-translate-y-1">
-          <img
-            src="https://images.unsplash.com/photo-1524503033411-c9566986fc8f?auto=format&fit=crop&w=800&q=80"
-            alt="Dr Alicia Fernandez" class="w-full h-56 object-cover" />
-          <div class="p-6 text-left">
-            <h3 class="text-lg font-bold text-[#003366]">Dr. Alicia Fernandez</h3>
-            <p class="text-sm text-gray-600 mb-1">1987 Hours Taught</p>
-            <p class="text-sm text-gray-700">Physics & Engineering</p>
+          class="bg-white rounded-3xl shadow-md hover:shadow-xl transition transform
+                 hover:-translate-y-1 p-8 flex flex-col items-center text-center"
+        >
+          <div class="w-14 h-14 rounded-2xl bg-[#FF6600]/10 flex items-center justify-center mb-4">
+            <span class="text-2xl">📚</span>
           </div>
+          <h3 class="text-lg font-semibold text-[#003366] mb-2">
+            Academic Tutoring
+          </h3>
+          <p class="text-sm text-gray-600">
+            Support for primary, secondary and university students in maths, science,
+            languages and more.
+          </p>
         </div>
 
-        <!-- Tutor 2 -->
+        <!-- Service 2 -->
         <div
-          class="bg-gray-50 rounded-3xl shadow-md hover:shadow-xl overflow-hidden transition transform hover:-translate-y-1">
-          <img
-            src="https://images.unsplash.com/photo-1552058544-f2b08422138a?auto=format&fit=crop&w=800&q=80"
-            alt="Mr James Carter" class="w-full h-56 object-cover" />
-          <div class="p-6 text-left">
-            <h3 class="text-lg font-bold text-[#003366]">Mr. James Carter</h3>
-            <p class="text-sm text-gray-600 mb-1">2415 Hours Taught</p>
-            <p class="text-sm text-gray-700">Mathematics & Statistics</p>
+          class="bg-white rounded-3xl shadow-md hover:shadow-xl transition transform
+                 hover:-translate-y-1 p-8 flex flex-col items-center text-center"
+        >
+          <div class="w-14 h-14 rounded-2xl bg-[#FF6600]/10 flex items-center justify-center mb-4">
+            <span class="text-2xl">🎓</span>
           </div>
+          <h3 class="text-lg font-semibold text-[#003366] mb-2">
+            Exam & Admissions Prep
+          </h3>
+          <p class="text-sm text-gray-600">
+            Guidance for national exams, international tests and university admissions interviews.
+          </p>
         </div>
 
-        <!-- Tutor 3 -->
+        <!-- Service 3 -->
         <div
-          class="bg-gray-50 rounded-3xl shadow-md hover:shadow-xl overflow-hidden transition transform hover:-translate-y-1">
-          <img
-            src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80"
-            alt="Ms Claire Wong" class="w-full h-56 object-cover" />
-          <div class="p-6 text-left">
-            <h3 class="text-lg font-bold text-[#003366]">Ms. Claire Wong</h3>
-            <p class="text-sm text-gray-600 mb-1">1732 Hours Taught</p>
-            <p class="text-sm text-gray-700">Business & Economics</p>
+          class="bg-white rounded-3xl shadow-md hover:shadow-xl transition transform
+                 hover:-translate-y-1 p-8 flex flex-col items-center text-center"
+        >
+          <div class="w-14 h-14 rounded-2xl bg-[#FF6600]/10 flex items-center justify-center mb-4">
+            <span class="text-2xl">💻</span>
           </div>
+          <h3 class="text-lg font-semibold text-[#003366] mb-2">
+            Online & Community Classes
+          </h3>
+          <p class="text-sm text-gray-600">
+            Flexible online lessons and CASAF community sessions for learners in different regions.
+          </p>
         </div>
 
       </div>
     </div>
   </section>
 
-  <!-- FOOTER SECTION -->
-  <footer id="contact" class="bg-[#003366] text-white pt-10 mt-12">
-    <div class="max-w-7xl mx-auto px-6 lg:px-12 grid md:grid-cols-3 gap-10">
+  <!-- ===================== WE'RE HERE TO HELP ===================== -->
+  <section class="bg-[#FFF4EC] py-20">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12 grid lg:grid-cols-2 gap-16 items-center">
 
-      <!-- ABOUT CASAF -->
-      <div>
-        <h3 id="footerAboutTitle" class="text-xl font-bold mb-3 text-[#FF6600]">CASAF Tutoring</h3>
-        <p id="footerAboutText" class="text-sm leading-relaxed text-gray-200">
-          CASAF Tutoring empowers students across Africa by connecting them with
-          experienced mentors who inspire confidence, improve grades, and help achieve
-          life-changing academic goals.
+    <!-- LEFT GRAPHICS -->
+    <div class="relative w-full flex justify-center">
+      <div class="absolute w-80 h-80 bg-[#FFD7C2]/40 rounded-full top-6"></div>
+
+      <img
+        src="assets/images/casaf-team.png"
+        alt="CASAF team members"
+        class="relative w-48 h-48 rounded-full object-cover shadow-xl border-4 border-white"
+      />
+
+      <div class="absolute -left-5 top-24 bg-white shadow-lg px-4 py-2 rounded-xl text-xs font-medium">
+        “We search tutors for you.”
+      </div>
+
+      <div class="absolute -right-5 bottom-10 bg-white shadow-lg px-4 py-2 rounded-xl text-xs font-medium">
+        “We’re here to help 24/7.”
+      </div>
+    </div>
+
+    <!-- RIGHT CONTENT -->
+    <div class="space-y-5">
+      <p class="tracking-[0.25em] text-xs text-[#6b5cff] uppercase">
+        Stop Your Search
+      </p>
+
+      <h2 class="text-4xl font-bold text-[#0A2E5C] leading-snug">
+        We’re Here To Help You Find the Right Tutor
+      </h2>
+
+      <p class="text-gray-600 leading-relaxed">
+        Our CASAF team knows each tutor personally. Tell us about your goals
+        and challenges, and we’ll build a shortlist that fits your level,
+        subject, budget, and location.
+      </p>
+
+      <ul class="text-gray-700 space-y-2">
+        <li>✓ Carefully vetted tutors across Cameroon and beyond</li>
+        <li>✓ Matching by subject, level and language</li>
+        <li>✓ Support for parents, students and graduates</li>
+      </ul>
+
+      <a
+        href="request.html"
+        class="inline-block bg-[#FF6600] text-white px-8 py-3 rounded-full font-semibold
+              hover:bg-[#e85a00] transition shadow-md"
+      >
+        Contact Our Team →
+      </a>
+    </div>
+
+  </div>
+</section>
+
+  <!-- ===================== MINI CONTACT CALLOUT ===================== -->
+  <section id="contact-section" class="bg-white py-12 border-t border-gray-200">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-12 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="max-w-xl">
+        <h3 class="text-xl sm:text-2xl font-bold text-[#003366] mb-2">
+          Have Questions About CASAF Tutoring?
+        </h3>
+        <p class="text-gray-600 text-sm sm:text-base">
+          Call us or send a request and we’ll respond with options for tutors, pricing
+          and the best learning plan for your child or yourself.
         </p>
       </div>
 
-      <!-- QUICK LINKS -->
+      <div class="flex flex-col sm:flex-row gap-3">
+        <a
+          href="tel:+237675316171"
+          class="inline-flex items-center justify-center px-5 py-3 rounded-full border
+                border-[#FF6600] text-[#FF6600] font-semibold hover:bg-[#FFF4EB] transition text-sm"
+        >
+          📞 Call CASAF
+        </a>
+        <a
+          href="request.html"
+          class="inline-flex items-center justify-center px-5 py-3 rounded-full bg-[#FF6600]
+                 text-white font-semibold shadow-md hover:bg-[#e85a00] transition text-sm"
+        >
+          Request Tutor Online →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="bg-[#10163A] text-white pt-10 pb-6 mt-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 grid md:grid-cols-3 gap-10">
+
+      <!-- About CASAF -->
       <div>
-        <h3 id="footerLinksTitle" class="text-xl font-bold mb-3 text-[#FF6600]">Quick Links</h3>
+        <h3 id="footerAboutTitle" class="text-xl font-bold mb-3 text-[#FFAA66]">
+          CASAF Tutoring
+        </h3>
+        <p id="footerAboutText" class="text-sm leading-relaxed text-gray-200">
+          CASAF Tutoring empowers students across Africa by connecting them with
+          experienced mentors who inspire confidence, improve grades and support
+          long-term success.
+        </p>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h3 id="footerLinksTitle" class="text-xl font-bold mb-3 text-[#FFAA66]">
+          Quick Links
+        </h3>
         <ul class="space-y-2 text-sm">
-          <li><a id="footerHomeLink" href="#home" class="hover:underline hover:text-[#FF6600]">Home</a></li>
-          <li><a id="footerTutorsLink" href="#tutors" class="hover:underline hover:text-[#FF6600]">Tutors</a></li>
-          <li><a id="footerHowLink" href="#how" class="hover:underline hover:text-[#FF6600]">How It Works</a></li>
-          <li><a id="footerRequestLink" href="#request" class="hover:underline hover:text-[#FF6600]">Request Tutor</a></li>
-          <li><a id="footerContactLink" href="#contact-form" class="hover:underline hover:text-[#FF6600]">Contact</a></li>
+          <li><a id="footerHomeLink" href="index.html" class="hover:underline hover:text-[#FFAA66]">Home</a></li>
+          <li><a id="footerTutorsLink" href="find-tutor.html" class="hover:underline hover:text-[#FFAA66]">Find a Tutor</a></li>
+          <li><a id="footerHowLink" href="#services" class="hover:underline hover:text-[#FFAA66]">How It Works</a></li>
+          <li><a id="footerRequestLink" href="request.html" class="hover:underline hover:text-[#FFAA66]">Request Tutor</a></li>
+          <li><a id="footerContactLink" href="#contact-section" class="hover:underline hover:text-[#FFAA66]">Contact</a></li>
+          <li><a href="https://casafcameroon.org/" target="_blank" rel="noopener noreferrer" class="hover:underline hover:text-[#FFAA66]">CASAF Official Site</a></li>
         </ul>
       </div>
 
-      <!-- CONTACT INFO -->
+      <!-- Contact Info -->
       <div>
-        <h3 id="footerContactTitle" class="text-xl font-bold mb-3 text-[#FF6600]">Contact Us</h3>
+        <h3 id="footerContactTitle" class="text-xl font-bold mb-3 text-[#FFAA66]">
+          Contact Us
+        </h3>
         <p class="text-sm text-gray-200">
-          📍 Adamou street, adjacent to TECNO shop, New Town, Limbe, Cameroon
+          📍 Adamou Street, adjacent to TECNO shop, New Town, Limbe, Cameroon
         </p>
-        <p class="text-sm text-gray-200">📞 (+237) 675 31 61 71</p>
-        <p class="text-sm text-gray-200">
+        <p class="text-sm text-gray-200 mt-1">
+          📞 (+237) 675 31 61 71
+        </p>
+        <p class="text-sm text-gray-200 mt-1">
           ✉️
-          <a href="mailto:info@casafcameroon.org" class="underline hover:text-[#FF6600]">
+          <a href="mailto:info@casafcameroon.org" class="underline hover:text-[#FFAA66]">
             info@casafcameroon.org
           </a>
+        </p>
+        <p class="text-sm text-gray-200 mt-1"> 🌐 Official Website: <a href="https://casafcameroon.org/" target="_blank" rel="noopener noreferrer" class="underline hover:text-[#FFAA66]">
+          casafcameroon.org </a>
         </p>
       </div>
     </div>
 
-    <hr class="border-gray-500 my-8">
+    <hr class="border-gray-700 mt-8 mb-4" />
 
-    <!-- CONTACT FORM SECTION -->
-    <section id="contact-form" class="bg-gray-50 py-16">
-      <div class="max-w-4xl mx-auto px-6 text-center">
-
-        <!-- TITLE -->
-        <h2 id="contactTitle" class="text-3xl md:text-4xl font-bold text-[#003366] mb-6">
-          Get in Touch With CASAF Tutoring
-        </h2>
-        <p id="contactText" class="text-gray-600 mb-10">
-          Have questions or want to request a tutor? Fill out the form below and our team will contact you shortly.
-        </p>
-
-        <!-- FORM -->
-        <form id="casafForm" action="https://formspree.io/f/mnnlnqyv" method="POST"
-          class="bg-white rounded-2xl shadow-lg p-8 text-left space-y-6">
-          <!-- Name -->
-          <div>
-            <label id="contactLabelName" class="block text-gray-700 font-semibold mb-2">Full Name</label>
-            <input type="text" name="name" placeholder="Enter your name"
-              class="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#FF6600]"
-              required />
-          </div>
-
-          <!-- Email -->
-          <div>
-            <label id="contactLabelEmail" class="block text-gray-700 font-semibold mb-2">Email Address</label>
-            <input type="email" name="email" placeholder="example@email.com"
-              class="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#FF6600]"
-              required />
-          </div>
-
-          <!-- Message -->
-          <div>
-            <label id="contactLabelMessage" class="block text-gray-700 font-semibold mb-2">Message</label>
-            <textarea name="message" placeholder="Type your message here..." rows="4"
-              class="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#FF6600]"
-              required></textarea>
-          </div>
-
-          <!-- Submit Button -->
-          <button id="contactSubmitBtn" type="submit"
-            class="w-full bg-[#FF6600] text-white font-semibold py-3 rounded-lg hover:bg-[#e85a00] transition">
-            Send Message
-          </button>
-
-          <!-- Success / Error Message -->
-          <p id="formMessage" class="text-green-600 text-center mt-4 hidden">
-            Message sent successfully!
-          </p>
-        </form>
-      </div>
-    </section>
-
-    <!-- COPYRIGHT -->
-    <p class="flex justify-center items-center mt-6 pb-4 text-center text-xs text-gray-300 font-semibold">
+    <p class="text-center text-[11px] text-gray-400">
       &copy; 2025 Community Action Scheme Africa (CASAF). All rights reserved.
     </p>
   </footer>
 
-  <!-- Main Script -->
-  <script src="js/data.js"></script>
-  <script src="js/script.js"></script>
-
+  <!-- ===================== SCRIPTS ===================== -->
+  <!-- Order matters: translations first, then language, then main logic -->
   <script src="js/translations.js"></script>
   <script src="js/language.js"></script>
+  <script src="js/script.js"></script>
 </body>
-
 </html>

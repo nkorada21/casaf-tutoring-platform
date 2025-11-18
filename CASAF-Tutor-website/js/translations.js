@@ -7,7 +7,7 @@ const translations = {
     nav_contact: "Contact",
     nav_request: "Request Tutor",
 
-    hero_title: "CASAF Tutoring — Helping Students Across Cameroon Succeed",
+    hero_title: "CASAF Tutoring — Helping Students Succeed",
     hero_desc:
       "We support learners from primary school to university with personalised lessons, exam preparation, and confidence-building academic support.",
     hero_find: "Find a Tutor →",
