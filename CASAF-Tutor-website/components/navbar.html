@@ -1,0 +1,84 @@
+<!-- NAVBAR COMPONENT -->
+<nav class="bg-white shadow-md border-b border-gray-200 sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto flex justify-between items-center px-4 sm:px-6 lg:px-12 py-4">
+
+    <!-- Logo -->
+    <a href="index.html" class="flex items-center gap-2">
+      <div class="w-9 h-9 rounded-full bg-[#FF6600]/10 flex items-center justify-center">
+        <span class="text-xl font-extrabold text-[#FF6600]">C</span>
+      </div>
+      <span class="text-2xl font-extrabold text-[#003366] tracking-tight">
+        CASAF <span class="text-[#FF6600]">Tutoring</span>
+      </span>
+    </a>
+
+    <!-- Desktop Menu -->
+    <div class="hidden md:flex items-center gap-6 font-semibold text-gray-700">
+
+      <a id="navHome" href="index.html" class="hover:text-[#FF6600] transition">
+        Home
+      </a>
+
+      <a id="navTutors" href="find-tutor.html" class="hover:text-[#FF6600] transition">
+        Find a Tutor
+      </a>
+
+      <a id="navBecome" href="become-tutor.html" class="hover:text-[#FF6600] transition">
+        Become a Tutor
+      </a>
+
+      <a id="navHow" href="#services" class="hover:text-[#FF6600] transition">
+        How It Works
+      </a>
+
+      <a id="navContact" href="#contact-section" class="hover:text-[#FF6600] transition">
+        Contact
+      </a>
+
+      <a id="navRequest"
+         href="request.html"
+         class="bg-[#FF6600] text-white px-5 py-2 rounded-full hover:bg-[#e85a00] transition">
+        Request Tutor
+      </a>
+
+      <!-- Language Switcher -->
+      <label for="langSwitcher" class="sr-only">Language</label>
+      <select
+        id="langSwitcher"
+        aria-label="Language"
+        class="border border-gray-300 rounded-lg px-2 py-1 text-sm bg-white text-gray-700
+               focus:outline-none focus:ring-2 focus:ring-[#FF6600]"
+      >
+        <option value="en">EN</option>
+        <option value="fr">FR</option>
+        <option value="pg">Pidgin</option>
+        <option value="ha">Hausa</option>
+        <option value="ff">Fulfulde</option>
+      </select>
+    </div>
+
+    <!-- Mobile Button -->
+    <button
+      id="menuToggle"
+      class="md:hidden text-[#003366] text-3xl"
+      aria-label="Toggle navigation menu"
+    >
+      ☰
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-gray-200">
+    <div class="flex flex-col space-y-4 px-6 py-4 font-semibold text-gray-700">
+      <a href="index.html" class="hover:text-[#FF6600] transition">Home</a>
+      <a href="find-tutor.html" class="hover:text-[#FF6600] transition">Find a Tutor</a>
+      <a href="become-tutor.html" class="hover:text-[#FF6600] transition">Become a Tutor</a>
+      <a href="#services" class="hover:text-[#FF6600] transition">How It Works</a>
+      <a href="#contact-section" class="hover:text-[#FF6600] transition">Contact</a>
+      <a href="request.html"
+         class="bg-[#FF6600] text-white px-4 py-2 rounded-full hover:bg-[#e85a00] transition w-fit">
+        Request Tutor
+      </a>
+    </div>
+  </div>
+</nav>

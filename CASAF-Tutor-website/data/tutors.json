@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "name": "Dr. Rose",
+    "subject": "Science",
+    "level": "University",
+    "language": "English",
+    "hours": "2100+",
+    "image": "assets/tutors/tutor-main.jpg",
+    "bio": "Dedicated CASAF tutor helping science students reach scholarship-level results."
+  },
+  {
+    "id": 2,
+    "name": "Mr. Daniel",
+    "subject": "Mathematics",
+    "level": "Secondary",
+    "language": "English",
+    "hours": "1600+",
+    "image": "assets/tutors/tutor-physics.jpg",
+    "bio": "Experienced mathematics and physics tutor for secondary students."
+  },
+  {
+    "id": 3,
+    "name": "Ms. Clarisse",
+    "subject": "English & French",
+    "level": "Primary",
+    "language": "French",
+    "hours": "1200+",
+    "image": "assets/tutors/tutor-language.jpg",
+    "bio": "Bilingual tutor supporting learners in English and French."
+  },
+  {
+    "id": 4,
+    "name": "Mr. Ibrahim",
+    "subject": "Chemistry",
+    "level": "University",
+    "language": "Hausa",
+    "hours": "900+",
+    "image": "assets/tutors/tutor-chemistry.jpg",
+    "bio": "Advanced chemistry tutor for engineering and university science learners."
+  },
+  {
+    "id": 5,
+    "name": "Ms. Amina",
+    "subject": "Biology",
+    "level": "Secondary",
+    "language": "Fulfulde",
+    "hours": "750+",
+    "image": "assets/tutors/tutor-biology.jpg",
+    "bio": "Dedicated biology tutor helping students prepare for exams across Cameroon."
+  }
+]
