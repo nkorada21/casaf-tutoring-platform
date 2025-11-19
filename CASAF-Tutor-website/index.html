@@ -20,90 +20,14 @@
     CASAF Students Rated Us ★★★★★ on TrustAcademy
   </div>
 
-  <!-- ===================== NAVBAR ===================== -->
-  <nav class="bg-white shadow-md border-b border-gray-200 sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto flex justify-between items-center px-4 sm:px-6 lg:px-12 py-3 md:py-4">
-
-      <!-- Brand / Logo -->
-      <a href="index.html" class="flex items-center gap-2">
-        <div class="w-9 h-9 rounded-full bg-[#FF6600]/10 flex items-center justify-center">
-          <span class="text-xl font-extrabold text-[#FF6600]">C</span>
-        </div>
-        <span class="text-xl sm:text-2xl font-extrabold text-[#003366] tracking-tight">
-          CASAF <span class="text-[#FF6600]">Tutoring</span>
-        </span>
-      </a>
-
-      <!-- Desktop Menu -->
-      <div class="hidden md:flex items-center gap-6 font-semibold text-gray-700">
-
-        <a id="navHome" href="index.html" class="hover:text-[#FF6600] transition">
-          Home
-        </a>
-
-        <a id="navTutors" href="find-tutor.html" class="hover:text-[#FF6600] transition">
-          Find a Tutor
-        </a>
-
-        <a id="navHow" href="#services" class="hover:text-[#FF6600] transition">
-          How It Works
-        </a>
-
-        <a id="navContact" href="#contact-section" class="hover:text-[#FF6600] transition">
-          Contact
-        </a>
-
-        <!-- Become a Tutor -->
-      <a href="become-tutor.html" class="px-4 py-2 rounded-full border border-[#003366] text-[#003366] hover:bg-[#003366] hover:text-white transition">
-        Become a Tutor
-      </a>
-
-        <a id="navRequest"
-           href="request.html"
-           class="bg-[#FF6600] text-white px-5 py-2 rounded-full shadow-md hover:bg-[#e85a00] transition">
-          Request Tutor
-        </a>
-
-        <!-- Language Switcher -->
-        <label for="langSwitcher" class="sr-only">Language</label>
-        <select
-          id="langSwitcher"
-          aria-label="Language"
-          class="border border-gray-300 rounded-lg px-2 py-1 text-sm bg-white text-gray-700
-                 focus:outline-none focus:ring-2 focus:ring-[#FF6600]"
-        >
-          <option value="en">EN</option>
-          <option value="fr">FR</option>
-          <option value="pg">Pidgin</option>
-          <option value="ha">Hausa</option>
-          <option value="ff">Fulfulde</option>
-        </select>
-      </div>
-
-      <!-- Mobile Hamburger Button -->
-      <button
-        id="menuToggle"
-        class="md:hidden text-[#003366] text-3xl"
-        aria-label="Toggle navigation menu"
-      >
-        ☰
-      </button>
-    </div>
-
-    <!-- Mobile Menu -->
-    <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-gray-200">
-      <div class="flex flex-col space-y-4 px-6 py-4 font-semibold text-gray-700">
-        <a href="index.html" class="hover:text-[#FF6600] transition">Home</a>
-        <a href="find-tutor.html" class="hover:text-[#FF6600] transition">Find a Tutor</a>
-        <a href="#services" class="hover:text-[#FF6600] transition">How It Works</a>
-        <a href="#contact-section" class="hover:text-[#FF6600] transition">Contact</a>
-        <a href="request.html"
-           class="bg-[#FF6600] text-white px-4 py-2 rounded-full shadow-md hover:bg-[#e85a00] transition w-fit">
-          Request Tutor
-        </a>
-      </div>
-    </div>
-  </nav>
+  <!-- NAVBAR (loaded dynamically) -->
+  <div id="navbar"></div>
+  <script>
+    fetch("components/navbar.html")
+      .then(res => res.text())
+      .then(html => document.getElementById("navbar").innerHTML = html);
+      initializeNavbar(); // Initialize navbar after loading
+  </script>
 
   <!-- ===================== HERO SECTION ===================== -->
   <section class="bg-white py-20">
@@ -222,7 +146,7 @@
         <!-- Service 1 -->
         <div
           class="bg-white rounded-3xl shadow-md hover:shadow-xl transition transform
-                 hover:-translate-y-1 p-8 flex flex-col items-center text-center"
+                hover:-translate-y-1 p-8 flex flex-col items-center text-center"
         >
           <div class="w-14 h-14 rounded-2xl bg-[#FF6600]/10 flex items-center justify-center mb-4">
             <span class="text-2xl">📚</span>
@@ -239,7 +163,7 @@
         <!-- Service 2 -->
         <div
           class="bg-white rounded-3xl shadow-md hover:shadow-xl transition transform
-                 hover:-translate-y-1 p-8 flex flex-col items-center text-center"
+                hover:-translate-y-1 p-8 flex flex-col items-center text-center"
         >
           <div class="w-14 h-14 rounded-2xl bg-[#FF6600]/10 flex items-center justify-center mb-4">
             <span class="text-2xl">🎓</span>
@@ -255,7 +179,7 @@
         <!-- Service 3 -->
         <div
           class="bg-white rounded-3xl shadow-md hover:shadow-xl transition transform
-                 hover:-translate-y-1 p-8 flex flex-col items-center text-center"
+                hover:-translate-y-1 p-8 flex flex-col items-center text-center"
         >
           <div class="w-14 h-14 rounded-2xl bg-[#FF6600]/10 flex items-center justify-center mb-4">
             <span class="text-2xl">💻</span>
@@ -353,7 +277,7 @@
         <a
           href="request.html"
           class="inline-flex items-center justify-center px-5 py-3 rounded-full bg-[#FF6600]
-                 text-white font-semibold shadow-md hover:bg-[#e85a00] transition text-sm"
+                text-white font-semibold shadow-md hover:bg-[#e85a00] transition text-sm"
         >
           Request Tutor Online →
         </a>
@@ -361,71 +285,16 @@
     </div>
   </section>
 
-  <!-- ===================== FOOTER ===================== -->
-  <footer class="bg-[#10163A] text-white pt-10 pb-6 mt-8">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 grid md:grid-cols-3 gap-10">
-
-      <!-- About CASAF -->
-      <div>
-        <h3 id="footerAboutTitle" class="text-xl font-bold mb-3 text-[#FFAA66]">
-          CASAF Tutoring
-        </h3>
-        <p id="footerAboutText" class="text-sm leading-relaxed text-gray-200">
-          CASAF Tutoring empowers students across Africa by connecting them with
-          experienced mentors who inspire confidence, improve grades and support
-          long-term success.
-        </p>
-      </div>
-
-      <!-- Quick Links -->
-      <div>
-        <h3 id="footerLinksTitle" class="text-xl font-bold mb-3 text-[#FFAA66]">
-          Quick Links
-        </h3>
-        <ul class="space-y-2 text-sm">
-          <li><a id="footerHomeLink" href="index.html" class="hover:underline hover:text-[#FFAA66]">Home</a></li>
-          <li><a id="footerTutorsLink" href="find-tutor.html" class="hover:underline hover:text-[#FFAA66]">Find a Tutor</a></li>
-          <li><a id="footerHowLink" href="#services" class="hover:underline hover:text-[#FFAA66]">How It Works</a></li>
-          <li><a id="footerRequestLink" href="request.html" class="hover:underline hover:text-[#FFAA66]">Request Tutor</a></li>
-          <li><a id="footerContactLink" href="#contact-section" class="hover:underline hover:text-[#FFAA66]">Contact</a></li>
-          <li><a href="https://casafcameroon.org/" target="_blank" rel="noopener noreferrer" class="hover:underline hover:text-[#FFAA66]">CASAF Official Site</a></li>
-        </ul>
-      </div>
-
-      <!-- Contact Info -->
-      <div>
-        <h3 id="footerContactTitle" class="text-xl font-bold mb-3 text-[#FFAA66]">
-          Contact Us
-        </h3>
-        <p class="text-sm text-gray-200">
-          📍 Adamou Street, adjacent to TECNO shop, New Town, Limbe, Cameroon
-        </p>
-        <p class="text-sm text-gray-200 mt-1">
-          📞 (+237) 675 31 61 71
-        </p>
-        <p class="text-sm text-gray-200 mt-1">
-          ✉️
-          <a href="mailto:info@casafcameroon.org" class="underline hover:text-[#FFAA66]">
-            info@casafcameroon.org
-          </a>
-        </p>
-        <p class="text-sm text-gray-200 mt-1"> 🌐 Official Website: <a href="https://casafcameroon.org/" target="_blank" rel="noopener noreferrer" class="underline hover:text-[#FFAA66]">
-          casafcameroon.org </a>
-        </p>
-      </div>
-    </div>
-
-    <hr class="border-gray-700 mt-8 mb-4" />
-
-    <p class="text-center text-[11px] text-gray-400">
-      &copy; 2025 Community Action Scheme Africa (CASAF). All rights reserved.
-    </p>
-  </footer>
+  <!-- FOOTER (loaded dynamically) -->
+  <div id="footer"></div>
+  <script>
+    fetch("components/footer.html")
+      .then(res => res.text())
+      .then(html => document.getElementById("footer").innerHTML = html);
+  </script>
 
   <!-- ===================== SCRIPTS ===================== -->
-  <!-- Order matters: translations first, then language, then main logic -->
-  <script src="js/translations.js"></script>
-  <script src="js/language.js"></script>
   <script src="js/script.js"></script>
+  <script src="js/language.js"></script>
 </body>
 </html>
