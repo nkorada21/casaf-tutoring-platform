@@ -1,119 +1,128 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  const resultsGrid = document.getElementById("resultsGrid");
-  const resultsCount = document.getElementById("resultsCount");
+// DOM elements
+const resultsGrid = document.getElementById("resultsGrid");
+const resultsCount = document.getElementById("resultsCount");
 
-  // FILTER INPUTS
-  const searchName = document.getElementById("searchName");
-  const filterSubject = document.getElementById("filterSubject");
-  const filterLevel = document.getElementById("filterLevel");
-  const filterLanguage = document.getElementById("filterLanguage");
-  const filterLocation = document.getElementById("filterLocation");
+const searchName = document.getElementById("searchName");
+const filterSubject = document.getElementById("filterSubject");
+const filterLevel = document.getElementById("filterLevel");
+const filterLanguage = document.getElementById("filterLanguage");
+const filterLocation = document.getElementById("filterLocation");
 
-  // BUTTONS
-  const applyBtn = document.getElementById("applyFilters");
-  const resetBtn = document.getElementById("resetFilters");
+const applyBtn = document.getElementById("applyFilters");
+const resetBtn = document.getElementById("resetFilters");
 
 
-  // ========== RENDER TUTORS ==========
-  function renderTutors(list) {
-    resultsGrid.innerHTML = "";
+// ========== RENDER TUTORS (CARD GRID) ==========
+function renderTutors(list) {
+  resultsGrid.innerHTML = "";
 
-    if (list.length === 0) {
-      resultsGrid.innerHTML = `
-        <p class="text-center text-gray-600 py-6">No tutors found. Try adjusting your filters.</p>
-      `;
-      resultsCount.textContent = "0 tutors found";
-      return;
-    }
+  if (list.length === 0) {
+    resultsGrid.innerHTML =
+      `<p class="text-center text-gray-600 py-6">No tutors found.</p>`;
+    resultsCount.textContent = "0 tutors found";
+    return;
+  }
 
-    list.forEach(tutor => {
-      const card = `
-        <div class="bg-white p-5 rounded-2xl shadow-md hover:shadow-lg transition">
+  list.forEach(tutor => {
+    const card = `
+      <div class="bg-white rounded-3xl shadow-md hover:shadow-xl transition
+                  p-5 flex flex-col">
 
-          <div class="flex gap-4 items-center">
-            <img 
-              src="${tutor.img}" 
-              alt="${tutor.name}" 
-              class="w-20 h-20 object-cover rounded-2xl"
-            />
-            
-            <div>
-              <h3 class="font-bold text-[#003366]">${tutor.name}</h3>
-              <p class="text-sm text-gray-600">${tutor.subject}</p>
-              <p class="text-xs text-gray-500">${tutor.level} • ${tutor.language}</p>
-            </div>
-          </div>
+        <img src="${tutor.img}" 
+              class="w-full h-40 object-cover rounded-2xl mb-4" />
 
-          <div class="mt-4 text-xs text-gray-500">
-            <p>📍 ${tutor.location}</p>
-            <p>⏱ ${tutor.hours} hours taught</p>
-          </div>
+        <h3 class="text-lg font-bold text-[#003366]">${tutor.name}</h3>
+        <p class="text-sm text-[#FF6600]">${tutor.subject}</p>
 
+        <p class="text-xs text-gray-600 mt-1">
+          ${tutor.level}
+        </p>
+        <p class="text-xs text-gray-500">
+          ${tutor.language}
+        </p>
+
+        <div class="mt-4 text-xs text-gray-600">
+          <p>📍 ${tutor.location}</p>
+          <p>⏱ ${tutor.hours} hours taught</p>
         </div>
-      `;
-      resultsGrid.innerHTML += card;
-    });
 
-    resultsCount.textContent = `${list.length} tutors found`;
+        <div class="mt-4 flex gap-2">
+          <a href="tutor.html?id=${tutor.id}"
+              class="flex-1 text-center px-3 py-2 border border-[#FF6600] 
+                    text-[#FF6600] rounded-full text-xs font-semibold">
+            View Profile
+          </a>
+
+          <a href="request.html"
+              class="flex-1 text-center px-3 py-2 bg-[#FF6600] text-white
+                    rounded-full text-xs font-semibold">
+            Request
+          </a>
+        </div>
+
+      </div>
+    `;
+
+    resultsGrid.innerHTML += card;
+  });
+
+  resultsCount.textContent = `${list.length} tutors found`;
+}
+
+
+// ========== FILTER LOGIC ==========
+function applyFiltersFunc() {
+  let filtered = TUTORS;
+
+  const keyword = searchName.value.toLowerCase();
+
+  if (keyword) {
+    filtered = filtered.filter(t =>
+      t.name.toLowerCase().includes(keyword) ||
+      t.subject.toLowerCase().includes(keyword)
+    );
   }
 
-
-  // ========== FILTER FUNCTION ==========
-  function applyFiltersFunc() {
-    let filtered = TUTORS;
-
-    // SEARCH
-    const keyword = searchName.value.toLowerCase();
-    if (keyword) {
-      filtered = filtered.filter(t =>
-        t.name.toLowerCase().includes(keyword) ||
-        t.subject.toLowerCase().includes(keyword)
-      );
-    }
-
-    // SUBJECT
-    if (filterSubject.value) {
-      filtered = filtered.filter(t => t.subject === filterSubject.value);
-    }
-
-    // LEVEL
-    if (filterLevel.value) {
-      filtered = filtered.filter(t => t.level === filterLevel.value);
-    }
-
-    // LANGUAGE
-    if (filterLanguage.value) {
-      filtered = filtered.filter(t => t.language === filterLanguage.value);
-    }
-
-    // LOCATION
-    if (filterLocation.value) {
-      filtered = filtered.filter(t =>
-        t.location.toLowerCase().includes(filterLocation.value.toLowerCase())
-      );
-    }
-
-    renderTutors(filtered);
+  if (filterSubject.value) {
+    filtered = filtered.filter(t => t.subject === filterSubject.value);
   }
 
-
-  // ========== RESET ==========
-  function resetFiltersFunc() {
-    searchName.value = "";
-    filterSubject.value = "";
-    filterLevel.value = "";
-    filterLanguage.value = "";
-    filterLocation.value = "";
-    renderTutors(TUTORS);
+  if (filterLevel.value) {
+    filtered = filtered.filter(t => t.level === filterLevel.value);
   }
 
+  if (filterLanguage.value) {
+    filtered = filtered.filter(t => t.language === filterLanguage.value);
+  }
 
-  // BUTTON EVENTS
-  applyBtn.addEventListener("click", applyFiltersFunc);
-  resetBtn.addEventListener("click", resetFiltersFunc);
+  if (filterLocation.value) {
+    filtered = filtered.filter(t =>
+      t.location.toLowerCase().includes(filterLocation.value.toLowerCase())
+    );
+  }
 
-  // FIRST LOAD
+  renderTutors(filtered);
+}
+
+
+// ========== RESET FILTERS ==========
+function resetFiltersFunc() {
+  searchName.value = "";
+  filterSubject.value = "";
+  filterLevel.value = "";
+  filterLanguage.value = "";
+  filterLocation.value = "";
   renderTutors(TUTORS);
+}
+
+
+// EVENTS
+applyBtn.addEventListener("click", applyFiltersFunc);
+resetBtn.addEventListener("click", resetFiltersFunc);
+
+// FIRST RENDER
+renderTutors(TUTORS);
 
 });
