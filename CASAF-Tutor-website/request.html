@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Request a Tutor | CASAF Tutoring</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Optional custom CSS -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body class="font-sans bg-gray-50 text-gray-900">
+
+  <!-- ========== TOP INFO BAR ========== -->
+  <div class="bg-[#003366] text-white text-center text-xs sm:text-sm py-2 font-medium shadow-sm">
+    Call anytime: <b>(+237) 675 31 61 71</b> |
+    CASAF Students Rated Us ★★★★★ on TrustAcademy
+  </div>
+
+  <!-- ========== NAVBAR (loaded dynamically) ========== -->
+  <div id="navbar"></div>
+  <script>
+    fetch("components/navbar.html")
+      .then((res) => res.text())
+      .then((html) => {
+        document.getElementById("navbar").innerHTML = html;
+      });
+  </script>
+
+  <!-- ========== PAGE HERO / INTRO ========== -->
+  <section class="bg-white py-12 sm:py-16 border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 grid lg:grid-cols-2 gap-10 items-start">
+
+      <!-- LEFT: TEXT -->
+      <div class="space-y-4">
+        <h1 class="text-3xl sm:text-4xl font-extrabold text-[#003366]">
+          Request a CASAF Tutor
+        </h1>
+        <p class="text-gray-600 text-sm sm:text-base max-w-xl">
+          Tell us about the student, subjects and level. The CASAF team will review your request
+          and recommend tutors who match your needs, budget and preferred location
+          (online or in-person in Cameroon).
+        </p>
+
+        <ul class="text-sm text-gray-700 space-y-2">
+          <li>✓ Support for primary, secondary, high school and university students</li>
+          <li>✓ Academic help in Maths, Science, Languages, ICT and more</li>
+          <li>✓ Tutoring available in English, French and Pidgin (and local languages where possible)</li>
+        </ul>
+      </div>
+
+      <!-- RIGHT: INFO CARD -->
+      <div class="bg-[#FFF4EC] border border-[#FFD7C2] rounded-3xl p-6 shadow-sm space-y-3">
+        <h2 class="text-lg font-bold text-[#003366]">How it works</h2>
+        <ol class="list-decimal list-inside text-sm text-gray-700 space-y-1">
+          <li>Fill in the form with details about the student.</li>
+          <li>CASAF reviews your request and shortlists tutors.</li>
+          <li>We contact you with options and next steps.</li>
+        </ol>
+        <p class="text-xs text-gray-500 pt-2">
+          Typical response time: within 1–2 working days.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========== REQUEST FORM ========== -->
+  <section class="bg-gray-50 py-14">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="bg-white rounded-3xl shadow-lg p-6 sm:p-8">
+        <h2 class="text-2xl sm:text-3xl font-bold text-[#003366] mb-2">
+          Tutor Request Form
+        </h2>
+        <p class="text-gray-600 text-sm sm:text-base mb-6">
+          Please provide as much information as possible so we can match you with the
+          most suitable CASAF tutor.
+        </p>
+
+        <!-- IMPORTANT: reuse id="casafForm" so existing script.js handles it -->
+        <form
+          id="casafForm"
+          action="https://formspree.io/f/mnnlnqyv"
+          method="POST"
+          class="space-y-6"
+        >
+          <!-- hidden field to identify form type -->
+          <input type="hidden" name="form_type" value="Tutor Request" />
+
+          <!-- SECTION: CONTACT DETAILS -->
+          <div class="grid md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm font-semibold text-gray-700 mb-1">
+                Your Name (Parent / Student)
+              </label>
+              <input
+                type="text"
+                name="contact_name"
+                required
+                placeholder="e.g. Parent: Mrs. N., or Student: John"
+                class="w-full border border-gray-300 rounded-xl px-4 py-3 text-sm
+                       focus:outline-none focus:ring-2 focus:ring-[#FF6600]"
+              />
+            </div>
+
+            <div>
+              <label class="block text-sm font-semibold text-gray-700 mb-1">
+                Email Address
+              </label>
+              <input
+                type="email"
+                name="contact_email"
+                required
+                placeholder="example@email.com"
+                class="w-full border border-gray-300 rounded-xl px-4 py-3 text-sm
+                       focus:outline-none focus:ring-2 focus:ring-[#FF6600]"
+              />
+            </div>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm font-semibold text-gray-700 mb-1">
+                Phone / WhatsApp Number
+              </label>
+              <input
+                type="text"
+                name="contact_phone"
+                placeholder="e.g. +237 6xx xx xx xx"
+                class="w-full border border-gray-300 rounded-xl px-4 py-3 text-sm
+                       focus:outline-none focus:ring-2 focus:ring-[#FF6600]"
+              />
+            </div>
+
+            <div>
+              <label class="block text-sm font-semibold text-gray-700 mb-1">
+                Preferred Contact Method
+              </label>
+              <select
+                name="preferred_contact" title="preferred-contact"
+                class="w-full border border-gray-300 rounded-xl px-4 py-3 text-sm
+                       focus:outline-none focus:ring-2 focus:ring-[#FF6600]"
+              >
+                <option value="">No preference</option>
+                <option value="WhatsApp">WhatsApp</option>
+                <option value="Phone call">Phone call</option>
+                <option value="Email">Email</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- SECTION: STUDENT INFO -->
+          <div class="border-t border-gray-200 pt-6 mt-4">
+            <h3 class="text-lg font-semibold text-[#003366] mb-3">
+              Student Information
+            </h3>
+
+            <div class="grid md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-1">
+                  Student Name
+                </label>
+                <input
+                  type="text"
+                  name="student_name"
+                  placeholder="Student full name"
+                  class="w-full border border-gray-300 rounded-xl px-4 py-3 text-sm
+                         focus:outline-none focus:ring-2 focus:ring-[#FF6600]"
+                />
+              </div>
+
+              <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-1">
+                  Student Level
+                </label>
+                <select
+                  name="student_level" title="student-level"
+                  class="w-full border border-gray-300 rounded-xl px-4 py-3 text-sm
+                         focus:outline-none focus:ring-2 focus:ring-[#FF6600]"
+                >
+                  <option value="">Select level</option>
+                  <option>Primary</option>
+                  <option>Secondary</option>
+                  <option>High School</option>
+                  <option>University</option>
+                  <option>Graduate / Professional</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-4 mt-4">
+              <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-1">
+                  Subjects Needed
+                </label>
+                <input
+                  type="text"
+                  name="subjects"
+                  required
+                  placeholder="e.g. Mathematics, Physics, English"
+                  class="w-full border border-gray-300 rounded-xl px-4 py-3 text-sm
+                         focus:outline-none focus:ring-2 focus:ring-[#FF6600]"
+                />
+              </div>
+
+              <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-1">
+                  Preferred Language of Instruction
+                </label>
+                <select
+                  name="teaching_language" title="teaching-language"
+                  class="w-full border border-gray-300 rounded-xl px-4 py-3 text-sm
+                         focus:outline-none focus:ring-2 focus:ring-[#FF6600]"
+                >
+                  <option value="">Any</option>
+                  <option>English</option>
+                  <option>French</option>
+                  <option>English or French</option>
+                  <option>Pidgin (where available)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-4 mt-4">
+              <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-1">
+                  Location
+                </label>
+                <input
+                  type="text"
+                  name="location"
+                  required
+                  placeholder="e.g. Limbe, Buea, Douala, Online"
+                  class="w-full border border-gray-300 rounded-xl px-4 py-3 text-sm
+                         focus:outline-none focus:ring-2 focus:ring-[#FF6600]"
+                />
+              </div>
+
+              <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-1">
+                  Lesson Mode
+                </label>
+                <select
+                  name="lesson_mode" title="lesson-mode"
+                  class="w-full border border-gray-300 rounded-xl px-4 py-3 text-sm
+                         focus:outline-none focus:ring-2 focus:ring-[#FF6600]"
+                >
+                  <option value="">No preference</option>
+                  <option>Online</option>
+                  <option>In-person</option>
+                  <option>Mix of online & in-person</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- SECTION: EXTRA DETAILS -->
+          <div class="border-t border-gray-200 pt-6 mt-4 space-y-4">
+            <div>
+              <label class="block text-sm font-semibold text-gray-700 mb-1">
+                How often do you want lessons?
+              </label>
+              <select
+                name="lesson_frequency" title="lesson-frequency"
+                class="w-full border border-gray-300 rounded-xl px-4 py-3 text-sm
+                       focus:outline-none focus:ring-2 focus:ring-[#FF6600]"
+              >
+                <option value="">Select an option</option>
+                <option>Once per week</option>
+                <option>Twice per week</option>
+                <option>Three times per week</option>
+                <option>Intensive / exam preparation</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-sm font-semibold text-gray-700 mb-1">
+                Additional information (optional)
+              </label>
+              <textarea
+                name="extra_details"
+                rows="4"
+                placeholder="Tell us about current grades, exam dates, learning challenges or any preferred tutor (if you saw a name on the website)."
+                class="w-full border border-gray-300 rounded-xl px-4 py-3 text-sm
+                       focus:outline-none focus:ring-2 focus:ring-[#FF6600]"
+              ></textarea>
+            </div>
+          </div>
+
+          <!-- SUBMIT BUTTON -->
+          <button
+            type="submit"
+            class="w-full bg-[#FF6600] text-white font-semibold py-3 rounded-xl
+                   hover:bg-[#e85a00] transition shadow-md text-sm sm:text-base"
+          >
+            Submit Tutor Request →
+          </button>
+
+          <!-- Form message handled by script.js -->
+          <p
+            id="formMessage"
+            class="hidden text-center text-sm mt-3 text-green-600"
+          >
+            Message sent successfully!
+          </p>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========== FOOTER (loaded dynamically) ========== -->
+  <div id="footer"></div>
+  <script>
+    fetch("components/footer.html")
+      .then((res) => res.text())
+      .then((html) => {
+        document.getElementById("footer").innerHTML = html;
+      });
+  </script>
+
+  <!-- ========== SCRIPTS ========== -->
+  <script src="js/script.js"></script>
+</body>
+</html>

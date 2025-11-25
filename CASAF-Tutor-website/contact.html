@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us | CASAF Tutoring</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Optional custom CSS -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body class="font-sans bg-gray-50 text-gray-900">
+
+  <!-- ========== TOP INFO BAR ========== -->
+  <div class="bg-[#003366] text-white text-center text-xs sm:text-sm py-2 font-medium shadow-sm">
+    Call anytime: <b>(+237) 675 31 61 71</b> |
+    CASAF Students Rated Us ★★★★★ on TrustAcademy
+  </div>
+
+  <!-- ========== NAVBAR (loaded dynamically) ========== -->
+  <div id="navbar"></div>
+  <script>
+    fetch("components/navbar.html")
+      .then(res => res.text())
+      .then(html => document.getElementById("navbar").innerHTML = html);
+  </script>
+
+  <!-- ========== PAGE HEADER ========== -->
+  <section class="bg-white py-14 border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 text-center">
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-[#003366]">Contact CASAF Tutoring</h1>
+      <p class="text-gray-600 mt-3 max-w-3xl mx-auto text-sm sm:text-base">
+        Reach out for general inquiries, partnership opportunities, tutoring questions, or student support.
+        Our team responds within 1–2 working days.
+      </p>
+    </div>
+  </section>
+
+  <!-- ========== CONTACT INFO + FORM ========== -->
+  <section class="bg-gray-50 py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 grid lg:grid-cols-2 gap-12">
+
+      <!-- LEFT: CONTACT INFORMATION -->
+      <div class="space-y-6">
+
+        <h2 class="text-2xl font-bold text-[#003366]">Get in touch</h2>
+
+        <p class="text-gray-600 text-sm leading-relaxed">
+          The CASAF team is available to support students, parents, tutors and schools.
+          Choose any method below to reach us.
+        </p>
+
+        <div class="space-y-4 text-sm text-gray-700">
+          <p class="flex items-center gap-3">
+            <span class="text-xl">📞</span>
+            <span><b>Phone / WhatsApp:</b> (+237) 675 31 61 71</span>
+          </p>
+
+          <p class="flex items-center gap-3">
+            <span class="text-xl">✉️</span>
+            <span>Email: <a href="mailto:info@casafcameroon.org" class="underline text-[#FF6600]">info@casafcameroon.org</a></span>
+          </p>
+
+          <p class="flex items-center gap-3">
+            <span class="text-xl">📍</span>
+            <span>
+              Adamou Street, near TECNO shop, New Town, Limbe, Cameroon
+            </span>
+          </p>
+        </div>
+
+        <div class="pt-4">
+          <a href="request.html"
+             class="inline-block bg-[#FF6600] text-white px-6 py-3 rounded-full font-semibold hover:bg-[#e85a00] transition shadow">
+            Request a Tutor →
+          </a>
+        </div>
+      </div>
+
+      <!-- RIGHT: CONTACT FORM -->
+      <div class="bg-white shadow-lg rounded-3xl p-6 sm:p-8">
+        <h3 class="text-xl font-bold text-[#003366] mb-4">Send us a message</h3>
+
+        <!-- same ID so script.js auto-handles it -->
+        <form id="casafForm"
+              action="https://formspree.io/f/mnnlnqyv"
+              method="POST"
+              class="space-y-6">
+
+          <input type="hidden" name="form_type" value="Contact Inquiry" />
+
+          <div>
+            <label class="block text-sm font-semibold text-gray-700 mb-1">
+              Name
+            </label>
+            <input type="text" name="name" required
+              placeholder="Your full name"
+              class="w-full border border-gray-300 rounded-xl px-4 py-3 text-sm
+                     focus:outline-none focus:ring-2 focus:ring-[#FF6600]" />
+          </div>
+
+          <div>
+            <label class="block text-sm font-semibold text-gray-700 mb-1">
+              Email
+            </label>
+            <input type="email" name="email" required
+              placeholder="you@example.com"
+              class="w-full border border-gray-300 rounded-xl px-4 py-3 text-sm
+                     focus:outline-none focus:ring-2 focus:ring-[#FF6600]" />
+          </div>
+
+          <div>
+            <label class="block text-sm font-semibold text-gray-700 mb-1">
+              Subject
+            </label>
+            <input type="text" name="subject"
+              placeholder="What is this about?"
+              class="w-full border border-gray-300 rounded-xl px-4 py-3 text-sm
+                     focus:outline-none focus:ring-2 focus:ring-[#FF6600]" />
+          </div>
+
+          <div>
+            <label class="block text-sm font-semibold text-gray-700 mb-1">
+              Message
+            </label>
+            <textarea name="message" required rows="5"
+              placeholder="Write your message here…"
+              class="w-full border border-gray-300 rounded-xl px-4 py-3 text-sm
+                     focus:outline-none focus:ring-2 focus:ring-[#FF6600]"></textarea>
+          </div>
+
+          <button type="submit"
+                  class="w-full bg-[#FF6600] text-white font-semibold py-3 rounded-xl
+                         hover:bg-[#e85a00] transition shadow">
+            Send Message →
+          </button>
+
+          <p id="formMessage"
+             class="hidden text-center text-green-600 font-semibold text-sm mt-3">
+            Message sent successfully!
+          </p>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <div id="footer"></div>
+  <script>
+    fetch("components/footer.html")
+      .then(res => res.text())
+      .then(html => document.getElementById("footer").innerHTML = html);
+  </script>
+
+  <!-- ========== GLOBAL SCRIPTS ========== -->
+  <script src="js/script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us | CASAF Tutoring</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Optional custom CSS -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body class="bg-gray-50 text-gray-900">
+
+  <!-- TOP BAR -->
+  <div class="bg-[#003366] text-white text-center text-xs sm:text-sm py-2 font-medium shadow-sm">
+    Call anytime: <b>(+237) 675 31 61 71</b> | CASAF Students Rated Us ★★★★★ on TrustAcademy
+  </div>
+
+  <!-- NAVBAR -->
+  <div id="navbar"></div>
+  <script>
+    fetch("components/navbar.html")
+      .then(r => r.text())
+      .then(html => document.getElementById("navbar").innerHTML = html);
+  </script>
+
+  <!-- HERO SECTION -->
+  <header class="bg-white py-16 border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <h1 class="text-4xl font-extrabold text-[#003366]">
+        About CASAF Tutoring
+      </h1>
+      <p class="text-gray-600 mt-4 max-w-2xl mx-auto text-sm sm:text-lg">
+        Empowering students across Cameroon through quality tutoring, strong mentorship, 
+        and community-driven academic support.
+      </p>
+    </div>
+  </header>
+
+  <!-- OUR MISSION -->
+  <section class="bg-gray-50 py-16">
+    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+
+      <img
+        src="assets/images/casaf-team.png"
+        alt="CASAF community"
+        class="rounded-3xl shadow-md w-full object-cover"
+      />
+
+      <div class="space-y-4">
+        <h2 class="text-3xl font-bold text-[#003366]">Our Mission</h2>
+        <p class="text-gray-700 leading-relaxed">
+          CASAF (Community Action Scheme Africa Foundation) is committed to helping students 
+          across Cameroon succeed in school and in life. We believe that every learner deserves 
+          access to quality education, personalized support and opportunities to thrive.
+        </p>
+        <p class="text-gray-700 leading-relaxed">
+          Through our tutoring program, we connect students with passionate, experienced tutors 
+          who guide them academically, help them build confidence and support them in securing 
+          top results in their exams.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- WHY CASAF TUTORING -->
+  <section class="bg-white py-16 border-y border-gray-200">
+    <div class="max-w-7xl mx-auto px-6">
+
+      <h2 class="text-3xl font-bold text-[#003366] text-center mb-12">
+        Why Choose CASAF Tutoring?
+      </h2>
+
+      <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+
+        <div class="bg-gray-50 p-8 rounded-3xl shadow hover:shadow-lg transition">
+          <h3 class="font-bold text-lg text-[#003366] mb-2">📘 Experienced Tutors</h3>
+          <p class="text-gray-600 text-sm">
+            Tutors are carefully selected for expertise, dedication and teaching quality.
+          </p>
+        </div>
+
+        <div class="bg-gray-50 p-8 rounded-3xl shadow hover:shadow-lg transition">
+          <h3 class="font-bold text-lg text-[#003366] mb-2">🎓 Academic Excellence</h3>
+          <p class="text-gray-600 text-sm">
+            Students improve their grades, understanding and confidence through one-on-one learning.
+          </p>
+        </div>
+
+        <div class="bg-gray-50 p-8 rounded-3xl shadow hover:shadow-lg transition">
+          <h3 class="font-bold text-lg text-[#003366] mb-2">🌍 Serving All of Cameroon</h3>
+          <p class="text-gray-600 text-sm">
+            CASAF supports students in Limbe, Buea, Yaoundé, Douala, Bamenda and online nationwide.
+          </p>
+        </div>
+
+        <div class="bg-gray-50 p-8 rounded-3xl shadow hover:shadow-lg transition">
+          <h3 class="font-bold text-lg text-[#003366] mb-2">📲 Online </h3>
+          <p class="text-gray-600 text-sm">
+            Flexible learning options that match your schedule, location and language.
+          </p>
+        </div>
+
+        <div class="bg-gray-50 p-8 rounded-3xl shadow hover:shadow-lg transition">
+          <h3 class="font-bold text-lg text-[#003366] mb-2">📖 Wide Range of Subjects</h3>
+          <p class="text-gray-600 text-sm">
+            Mathematics, Physics, Biology, English, French, ICT and many more.
+          </p>
+        </div>
+
+        <div class="bg-gray-50 p-8 rounded-3xl shadow hover:shadow-lg transition">
+          <h3 class="font-bold text-lg text-[#003366] mb-2">🤝 Community-Driven</h3>
+          <p class="text-gray-600 text-sm">
+            CASAF is dedicated to youth empowerment, academic growth and equal learning opportunities.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- MEET THE TEAM -->
+  <section class="bg-gray-50 py-16">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+
+      <h2 class="text-3xl font-bold text-[#003366] mb-10">
+        Meet Our Leadership Team
+      </h2>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-12">
+
+        <!-- Team Member -->
+        <div class="bg-white p-6 rounded-3xl shadow hover:shadow-xl transition">
+          <img alt="" src="assets/images/team-leader.png" class="w-32 h-32 rounded-full mx-auto object-cover"/>
+          <h3 class="mt-4 font-bold text-lg text-[#003366]">Adolf Mbonyam. O</h3>
+          <p class="text-sm text-gray-600">President & Executive Director</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-3xl shadow hover:shadow-xl transition">
+          <img alt="" src="assets/images/team-2.jpg" class="w-32 h-32 rounded-full mx-auto object-cover"/>
+          <h3 class="mt-4 font-bold text-lg text-[#003366]"></h3>
+          <p class="text-sm text-gray-600">Tutoring Coordinator</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-3xl shadow hover:shadow-xl transition">
+          <img alt="" src="assets/images/team-3.jpg" class="w-32 h-32 rounded-full mx-auto object-cover"/>
+          <h3 class="mt-4 font-bold text-lg text-[#003366]"></h3>
+          <p class="text-sm text-gray-600">Academic Programs Lead</p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA SECTION -->
+  <section class="bg-[#FFF4EC] py-14">
+    <div class="max-w-4xl mx-auto text-center px-6">
+
+      <h2 class="text-2xl sm:text-3xl font-bold text-[#003366] mb-4">
+        Ready to Improve Your Grades?
+      </h2>
+
+      <p class="text-gray-700 max-w-xl mx-auto text-sm sm:text-base">
+        Whether you're a parent or student, CASAF is here to support your academic journey.
+      </p>
+
+      <div class="flex justify-center gap-4 mt-6">
+        <a
+          href="find-tutor.html"
+          class="px-6 py-3 border border-[#FF6600] text-[#FF6600] rounded-full hover:bg-[#FFF0E5]"
+        >
+          Find a Tutor
+        </a>
+        <a
+          href="request.html"
+          class="px-6 py-3 bg-[#FF6600] text-white rounded-full hover:bg-[#e85a00]"
+        >
+          Request Help →
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <div id="footer"></div>
+  <script>
+    fetch("components/footer.html")
+      .then(r => r.text())
+      .then(html => document.getElementById("footer").innerHTML = html);
+  </script>
+
+</body>
+</html>
