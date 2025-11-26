@@ -48,7 +48,7 @@ function initializeTutorFilters() {
 
   // A backup in case tutors array isn't loaded yet
   if (typeof tutors === "undefined") {
-    console.error("❌ tutors array not found. Did you include data.js?");
+    console.error("tutors array not found. Did you include data.js?");
     return;
   }
 
