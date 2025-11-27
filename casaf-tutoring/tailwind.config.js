@@ -2,15 +2,10 @@
 export default {
   content: [
     "./index.html",
-    "./src/**/*.{js,jsx,ts,tsx}",
+    "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {
-      colors: {
-        casafBlue: "#003366",
-        casafGold: "#fbbf24",
-      },
-    },
+    extend: {},
   },
   plugins: [],
-};
+}
