@@ -1,9 +1,13 @@
-import { useState } from "react";
-import { FaFacebookF, FaInstagram, FaLinkedinIn, FaXTwitter, FaYoutube, FaTiktok } from "react-icons/fa6";
+import {
+  FaFacebookF,
+  FaInstagram,
+  FaLinkedinIn,
+  FaTwitter,
+  FaYoutube,
+  FaTiktok,
+} from "react-icons/fa";
 
 export default function Footer() {
-  const [expanded, setExpanded] = useState(false);
-
   return (
     <footer className="bg-[#252952] text-gray-300 pt-20 pb-10 px-6">
 
@@ -63,46 +67,36 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* SHOW MORE */}
-      <div className="text-center mt-10">
-        <button
-          onClick={() => setExpanded(!expanded)}
-          className="text-gray-300 hover:text-orange-300 text-sm transition"
-        >
-          {expanded ? "Show Less ▲" : "Show More ▼"}
-        </button>
-      </div>
-
-      {/* EXPANDED CONTENT */}
-      {expanded && (
-        <div className="mt-8 text-center text-sm text-gray-400">
-          <p>Additional information, accreditation, policies, and extended resource links go here.</p>
-        </div>
-      )}
-
       {/* SOCIAL ICONS */}
       <div className="flex justify-center gap-5 text-2xl mt-10">
         <FaFacebookF className="hover:text-orange-300 cursor-pointer" />
         <FaInstagram className="hover:text-orange-300 cursor-pointer" />
         <FaLinkedinIn className="hover:text-orange-300 cursor-pointer" />
-        <FaXTwitter className="hover:text-orange-300 cursor-pointer" />
+        <FaTwitter className="hover:text-orange-300 cursor-pointer" />
         <FaYoutube className="hover:text-orange-300 cursor-pointer" />
         <FaTiktok className="hover:text-orange-300 cursor-pointer" />
       </div>
 
-      {/* ASSOCIATION LOGO AREA */}
-      <div className="text-center mt-10 text-sm">
-        <p className="mb-3 text-gray-400">Tutors Association Member</p>
-        <img
-          src="/assets/tutor-association.png"
-          alt="Tutors Association"
-          className="mx-auto h-16 opacity-90"
-        />
+      {/* OFFICIAL WEBSITE */}
+      <div className="text-center mt-8 text-sm text-gray-400">
+        Official Website:{" "}
+        <a
+          href="https://casafcameroon.org/"
+          className="text-orange-300 hover:text-orange-200"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          casafcameroon.org
+        </a>
       </div>
 
       {/* COPYRIGHT */}
       <div className="text-center mt-8 text-xs text-gray-500">
-        &copy; {new Date().getFullYear()} CASAF Tutors — All Rights Reserved · Privacy Policy · Terms & Conditions
+        &copy; {new Date().getFullYear()} CASAF Tutors — All Rights Reserved.  
+        <span className="mx-2">·</span>  
+        Privacy Policy  
+        <span className="mx-2">·</span>  
+        Terms & Conditions
       </div>
     </footer>
   );
