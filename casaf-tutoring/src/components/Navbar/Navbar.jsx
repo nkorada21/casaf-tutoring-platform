@@ -77,7 +77,7 @@ export default function Navbar() {
             <li><a href="/resources" className="hover:text-orange-300">Resources</a></li>
             <li><a href="/find-tutors" className="hover:text-orange-300">Find Tutors</a></li>
             <li><a href="/pricing" className="hover:text-orange-300">Pricing</a></li>
-            <li><a href="/login" className="hover:text-orange-300">Log In</a></li>
+            <li><a href="/choose-login" className="hover:text-orange-300">Log In</a></li>
 
             <li>
               <a href="/signup" className="text-orange-300 hover:text-orange-200">
