@@ -30,7 +30,8 @@ export default function Signup() {
 
     setLoading(true);
     try {
-      const res = await registerUser(form);
+      const { name, email, password, role } = form;
+      const res = await registerUser({ name, email, password, role });
       setMsg(res.data.message);
     } catch (err) {
       setError(err.response?.data?.message || "Registration failed");
