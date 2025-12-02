@@ -69,10 +69,12 @@ export default function Footer() {
 
       {/* SOCIAL ICONS */}
       <div className="flex justify-center gap-5 text-2xl mt-10">
-        <FaFacebookF className="hover:text-orange-300 cursor-pointer" />
+        <a href="https://www.facebook.com/casafcameroon" rel="noopener noreferrer">
+        <FaFacebookF className="hover:text-orange-300 cursor-pointer" /></a>
         <FaInstagram className="hover:text-orange-300 cursor-pointer" />
         <FaLinkedinIn className="hover:text-orange-300 cursor-pointer" />
-        <FaTwitter className="hover:text-orange-300 cursor-pointer" />
+        <a href="https://x.com/Casafcameroon" rel="noopener noreferrer">
+        <FaTwitter className="hover:text-orange-300 cursor-pointer" /></a>
         <FaYoutube className="hover:text-orange-300 cursor-pointer" />
         <FaTiktok className="hover:text-orange-300 cursor-pointer" />
       </div>

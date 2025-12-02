@@ -117,8 +117,7 @@ export default function TutoringMenu() {
 
         <div className="mt-3 border-t border-white/10 pt-3">
           <a
-            href="/subjects/all"
-            className="block px-5 py-2 text-sm text-orange-300 hover:text-orange-200"
+            href="/subjects/all" className="block px-5 py-2 text-sm text-orange-300 hover:text-orange-200"
           >
             See Full Subjects List →
           </a>

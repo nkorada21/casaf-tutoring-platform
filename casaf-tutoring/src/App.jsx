@@ -10,9 +10,12 @@ import Signup from "./pages/auth/Signup";
 import ForgotPassword from "./pages/auth/ForgotPassword";
 import ResetPassword from "./pages/auth/ResetPassword";
 import EmailSent from "./pages/auth/EmailSent";
+import WhatsAppWidget from "./components/WhatsAppWidget";
+import AIBotWidget from "./components/AIBotWidget";
 
 // Dashboard
 import Dashboard from "./pages/dashboard/Dashboard";
+import SubjectsPage from "./pages/Subjects/SubjectsPage";
 
 export default function App() {
   return (
@@ -22,6 +25,9 @@ export default function App() {
       <Routes>
         {/* Home */}
         <Route path="/" element={<Home />} />
+
+        {/* Subjects Page Route */}
+        <Route path="/subjects/all" element={<SubjectsPage />} />
 
         {/* Tutoring */}
         <Route path="/tutoring/university" element={<h1>University Tutors</h1>} />
@@ -51,6 +57,9 @@ export default function App() {
       </Routes>
 
       <Footer />
+
+      <WhatsAppWidget /> {/* Floating WhatsApp chat */}
+      <AIBotWidget />     {/* AI Chatbot */}
       </>
   );
 }
