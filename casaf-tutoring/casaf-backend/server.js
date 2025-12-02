@@ -12,22 +12,31 @@ const authRoutes = require("./routes/authRoutes");
 
 const app = express();
 
+// FRONTEND URL (Vercel)
+const FRONTEND = process.env.FRONTEND_URL || "https://casaf-tutoring.vercel.app";
+
+// MIDDLEWARES
 app.use(express.json());
 app.use(cookieParser());
+
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL || "http://localhost:5173",
+    origin: FRONTEND,
+    methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
 );
 
+// TEST ROUTE
 app.get("/", (req, res) => {
   res.send("CASAF API running");
 });
 
+// AUTH ROUTES
 app.use("/api/auth", authRoutes);
 
+// SERVER
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () =>
-  console.log(`Server running on http://localhost:${PORT}`)
+  console.log(`Server running on port ${PORT}`)
 );
