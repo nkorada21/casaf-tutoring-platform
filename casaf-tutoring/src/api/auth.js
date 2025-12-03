@@ -1,5 +1,6 @@
 import axios from "axios";
 
+// Backend URL from .env
 const API = import.meta.env.VITE_BACKEND_URL;
 
 // Axios instance
@@ -29,5 +30,19 @@ export const logoutUser = async () => {
 // CHECK AUTH STATUS
 export const checkAuth = async () => {
   const response = await api.get("/api/auth/status");
+  return response.data;
+};
+
+// FORGOT PASSWORD
+export const forgotPassword = async (email) => {
+  const response = await api.post("/api/auth/forgot-password", { email });
+  return response.data;
+};
+
+// RESET PASSWORD
+export const resetPassword = async (token, newPassword) => {
+  const response = await api.post(`/api/auth/reset-password/${token}`, {
+    newPassword,
+  });
   return response.data;
 };
