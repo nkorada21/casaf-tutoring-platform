@@ -15,7 +15,7 @@ const app = express();
 app.use(express.json());
 app.use(cookieParser());
 
-// ★ FRONTEND URLs allowed
+// FRONTEND URLs allowed
 const allowedOrigins = [
   "http://localhost:5173",
   process.env.FRONTEND_URL,        // local frontend
@@ -39,10 +39,10 @@ app.use(
   })
 );
 
-// ★ PREVENT PREFLIGHT FAILURE
-app.options("*", cors());
+// PREVENT PREFLIGHT FAILURE
+app.use(cors());
 
-// ★ GLOBAL HEADERS FIX (For Vercel)
+// GLOBAL HEADERS FIX (For Vercel)
 app.use((req, res, next) => {
   const origin = req.headers.origin;
 
