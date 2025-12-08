@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // Backend URL from .env
-const API = import.meta.env.VITE_BACKEND_URL;
+const API = import.meta.env.VITE_BACKEND_URL + "/api";
 
 // Axios instance
 const api = axios.create({
