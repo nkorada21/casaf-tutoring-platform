@@ -1,6 +1,5 @@
 import HeroProfs from "../components/home/HeroProfs";
 import TrustBanner from "../components/home/TrustBanner";
-import SubjectsIntro from "../components/home/SubjectsIntro";
 import SubjectsGrid from "../components/home/SubjectsGrid";
 import OurServices from "../components/home/OurServices";
 import SupportTeam from "../components/home/SupportTeam";

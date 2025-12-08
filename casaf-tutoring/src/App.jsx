@@ -12,10 +12,12 @@ import ResetPassword from "./pages/auth/ResetPassword";
 import EmailSent from "./pages/auth/EmailSent";
 import WhatsAppWidget from "./components/WhatsAppWidget";
 import AIBotWidget from "./components/AIBotWidget";
+import FindTutorsPage from "./pages/FindTutorsPage";
 
 // Dashboard
 import Dashboard from "./pages/dashboard/Dashboard";
 import SubjectsPage from "./pages/Subjects/SubjectsPage";
+import RequestTutorPage from "./pages/RequestTutor/RequestTutorPage";
 
 export default function App() {
   return (
@@ -28,6 +30,10 @@ export default function App() {
 
         {/* Subjects Page Route */}
         <Route path="/subjects/all" element={<SubjectsPage />} />
+
+        <Route path="/find-tutors" element={<FindTutorsPage />} />
+
+        <Route path="/request-tutor" element={<RequestTutorPage />} />
 
         {/* Tutoring */}
         <Route path="/tutoring/university" element={<h1>University Tutors</h1>} />
