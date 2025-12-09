@@ -18,6 +18,7 @@ import FindTutorsPage from "./pages/FindTutorsPage";
 import Dashboard from "./pages/dashboard/Dashboard";
 import SubjectsPage from "./pages/Subjects/SubjectsPage";
 import RequestTutorPage from "./pages/RequestTutor/RequestTutorPage";
+import PricingPage from "./pages/Pricing/PricingPage";
 
 export default function App() {
   return (
@@ -34,6 +35,8 @@ export default function App() {
         <Route path="/find-tutors" element={<FindTutorsPage />} />
 
         <Route path="/request-tutor" element={<RequestTutorPage />} />
+
+        <Route path="/pricing" element={<PricingPage />} />
 
         {/* Tutoring */}
         <Route path="/tutoring/university" element={<h1>University Tutors</h1>} />
