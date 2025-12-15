@@ -49,6 +49,8 @@ const sendVerificationEmail = async (user) => {
    REGISTER
 -------------------------------------------- */
 router.post("/register", async (req, res) => {
+  console.log("headers content-type:", req.headers["content-type"]);
+  console.log("body:", req.body);
   try {
     const { name, email, password, role } = req.body;
 

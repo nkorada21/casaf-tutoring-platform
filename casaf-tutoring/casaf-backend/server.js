@@ -12,7 +12,6 @@ const app = express();
 connectDB();
 
 // MIDDLEWARE
-app.use(express.json());
 app.use(cookieParser());
 
 // FRONTEND URLs allowed
@@ -61,6 +60,8 @@ app.get("/", (req, res) => {
   res.send("CASAF API running");
 });
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 // ROUTES
 app.use("/api/auth", authRoutes);
 

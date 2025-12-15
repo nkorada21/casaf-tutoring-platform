@@ -1,47 +1,52 @@
 import axios from "axios";
 
 // Backend URL from .env
-const API = import.meta.env.VITE_BACKEND_URL + "/api";
+const API = import.meta.env.VITE_BACKEND_URL;
 
 // Axios instance
 const api = axios.create({
   baseURL: API,
   withCredentials: true,
+  headers: {
+    "Content-Type": "application/json",
+  },
 });
 
 // REGISTER
 export const registerUser = async (userData) => {
-  const response = await api.post("/auth/register", userData);
+  const response = await api.post("/api/auth/register", userData);
   return response.data;
 };
 
 // LOGIN
 export const loginUser = async (userData) => {
-  const response = await api.post("/auth/login", userData);
+  const response = await api.post("/api/auth/login", userData);
   return response.data;
 };
 
 // LOGOUT
 export const logoutUser = async () => {
-  const response = await api.post("/auth/logout");
+  const response = await api.post("/api/auth/logout");
   return response.data;
 };
 
 // CHECK AUTH STATUS
 export const checkAuth = async () => {
-  const response = await api.get("/auth/status");
+  const response = await api.get("/api/auth/status");
   return response.data;
 };
 
 // FORGOT PASSWORD
 export const forgotPassword = async (email) => {
-  const response = await api.post("/auth/forgot-password", { email });
+  const response = await api.post("/api/auth/forgot-password", { email });
   return response.data;
 };
 
 // RESET PASSWORD
-export const resetPassword = async (token, newPassword) => {
-  const response = await api.post(`/auth/reset-password/${token}`, {
+export const resetPassword = async ({email, token, newPassword}) => {
+  const response = await api.post("/api/auth/reset-password/", {
+    email,
+    token,
     newPassword,
   });
   return response.data;
