@@ -14,6 +14,10 @@ import WhatsAppWidget from "./components/WhatsAppWidget";
 import AIBotWidget from "./components/AIBotWidget";
 import FindTutorsPage from "./pages/FindTutorsPage";
 
+import ResourcesPage from "./pages/Resources/ResourcesPage";
+import CategoryPage from "./pages/Resources/CategoryPage";
+import BlogDetailPage from "./pages/Resources/BlogDetailPage";
+
 // Dashboard
 import Dashboard from "./pages/dashboard/Dashboard";
 import SubjectsPage from "./pages/Subjects/SubjectsPage";
@@ -33,6 +37,11 @@ export default function App() {
         <Route path="/subjects/all" element={<SubjectsPage />} />
 
         <Route path="/find-tutors" element={<FindTutorsPage />} />
+
+        {/* Resources */}
+        <Route path="/resources" element={<ResourcesPage />} />
+        <Route path="/resources/category/:categorySlug" element={<CategoryPage />} />
+        <Route path="/resources/blog/:slug" element={<BlogDetailPage />} />
 
         <Route path="/request-tutor" element={<RequestTutorPage />} />
 

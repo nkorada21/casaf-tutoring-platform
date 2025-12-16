@@ -4,13 +4,15 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import TutoringMenu from "./TutoringMenu";
 import AdmissionsMenu from "./AdmissionMenu";
 import TopBar from "./TopBar";
+import { getAuthUser, clearAuthUser } from "../../utils/authStorage";
 import { logoutUser } from "../../api/auth";
 
 export default function Navbar() {
   const [openMenu, setOpenMenu] = useState(null); // "tutoring" | "admissions" | null
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [user, setUser] = useState(null);
+  
   const navRef = useRef(null);
-
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
 
@@ -46,6 +48,24 @@ export default function Navbar() {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
+
+  // Load auth user
+  useEffect(() => {
+    setUser(getAuthUser());
+  }, []);
+
+  const onLogout = async () => {
+    try {
+      // If backend supports cookie-based logout
+      await logoutUser();
+    } catch (e) {
+      console.error("Logout failed", e);
+    } finally {
+      clearAuthUser();
+      setUser(null);
+      navigate("/");
+    }
+  };
 
   const baseLink =
     "hover:text-orange-300 transition-colors text-sm font-semibold";
@@ -133,16 +153,20 @@ export default function Navbar() {
                 Pricing
               </NavLink>
             </li>
-            <li>
-              {!isLoggedIn ? (
-              <NavLink to="/choose-login" className={activeLink}>
+
+            {/* - Auth links - */}
+            {!user ? (
+            <li><NavLink to="/choose-login" className={activeLink}>
                 Log In
               </NavLink>
+              </li>
               ) : (
-                <button onClick={handleLogout}
-                className="hover:text-orange-300 transition-colors text-sm font-semibold" > Logout </button>
+                <>
+                <li><NavLink to="/dashboard" className={activeLink}> Dashboard </NavLink></li>
+                <li> <button onClick={onLogout}
+                className= {`${baseLink} text-red-200 hover:text-red-100`} > Logout </button> </li>
+                </>
               )}
-            </li>
 
             <li>
               <NavLink
@@ -167,8 +191,7 @@ export default function Navbar() {
           <button
             className="lg:hidden text-2xl focus:outline-none"
             onClick={() => setMobileOpen((prev) => !prev)}
-            aria-label="Toggle navigation menu"
-          >
+            aria-label="Toggle navigation menu">
             {mobileOpen ? "✕" : "☰"}
           </button>
         </div>
@@ -253,7 +276,7 @@ export default function Navbar() {
                 Pricing
               </NavLink>
 
-              {!isLoggedIn ? (
+              {!user ? (
               <NavLink
                 to="/choose-login"
                 className={activeLink}
@@ -262,8 +285,11 @@ export default function Navbar() {
                 Log In
               </NavLink>
               ) : (
-                <button onClick={handleLogout}
-                className="text-left hover:text-orange-300 transition-colors text-sm font-semibold" > Logout </button>
+                <>
+                <NavLink to="/dashboard" className={activeLink} onClick={() => setMobileOpen(false)}> Dashboard </NavLink>
+                <button onClick={() => {setMobileOpen(false); onLogout(); }}
+                className="text-left text-red-200 hover:text-red-100 font-semibold" > Logout </button>
+                </>
               )}
 
               <NavLink

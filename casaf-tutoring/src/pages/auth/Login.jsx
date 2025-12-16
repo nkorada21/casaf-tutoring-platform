@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { loginUser } from "../../api/auth";
+import { setAuthUser } from "../../utils/authStorage";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -26,6 +27,9 @@ export default function Login() {
 
       localStorage.setItem("isLoggedIn", "true");
       localStorage.setItem("user", JSON.stringify(res.user));
+
+      setAuthUser(res.user || res.data?.user || { email })
+
       navigate("/dashboard"); // later you can split by role
     } catch (err) {
       setError(
