@@ -21,7 +21,6 @@ The site is designed to:
 - **HTML5**
 - **Tailwind CSS (via CDN)**
 - **Vanilla JavaScript (ES6)**
-- **Formspree** – for handling contact form submissions
 
 ---
 
