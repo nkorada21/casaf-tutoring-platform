@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { loginUser } from "../../api/auth";
 
@@ -23,6 +23,9 @@ export default function Login() {
     try {
       const res = await loginUser({ email, password, type });
       // You could store res.data.user in context if needed
+
+      localStorage.setItem("isLoggedIn", "true");
+      localStorage.setItem("user", JSON.stringify(res.user));
       navigate("/dashboard"); // later you can split by role
     } catch (err) {
       setError(

@@ -5,9 +5,11 @@ export default function AdmissionsMenu() {
 
   const categories = [
     { key: "cameroon", label: "Cameroon Admissions" },
-    { key: "universities", label: "Cameroon University Admissions" },
-    { key: "professional", label: "Professional & Competitive Exams" },
+    { key: "state_universities", label: "Cameroon State University Admissions" },
+    {  key: "private_universities", label: "Private University Admissions" },
+    { key: "institutes", label: "Pan-African Universities and Institutes" },
     { key: "international", label: "International Admissions" },
+    { key: "professional", label: "Professional & Competitive Exams" },
     { key: "support", label: "Scholarship & Application Support" },
   ];
 
@@ -21,15 +23,38 @@ export default function AdmissionsMenu() {
       "Parent & Guardian Consultations",
     ],
 
-    universities: [
-      "UB University of Buea Admissions",
-      "UY1 University of Yaoundé I Admissions",
-      "UY2 University of Yaoundé II Admissions",
-      "University of Bamenda (UBa) Admissions",
-      "ENS Entrance & Teacher Training Colleges",
-      "Polytech / Engineering School Admissions",
-      "Medical School Admissions (MBBS / Nursing)",
-      "Private University Admissions (e.g. Catholic, IUG, SIANTOU)",
+    state_universities: [
+      "University of Buea",
+      "University of Bamenda",
+      "University of Douala",
+      "University of Dschang",
+      "University of Maroua",
+      "University of Ngaoundere",
+      "University of Yaounde 1",
+      "University of Yaounde 2",
+      "University of Bertoua",
+      "University of Ebolowa",
+      "University of Garoua ¹ ² ³",
+    ],
+
+    private_universities: [
+      "University Institute of the Diocese of Buea (affiliated to University of Buea)",
+      "Catholic University of Central Africa (affiliated to University of Yaounde 1)",
+      "St. Monica the American University, Cameroon, Buea (affiliated to University of Buea)",
+      "International University, Bamenda (affiliated to University of Bamenda)",
+      "National Polytechnic Bambui (affiliated to University of Bamenda)",
+      "St. Jerome University Douala (affiliated to University of Douala)",
+      "Catholic University of Cameroon, Bamenda",
+      "Cosendai Adventist University, Nanga Eboko",
+      "ICT University, Yaounde",
+      "University of Montagnes, Bangangte* ¹ ² ³",
+    ],
+
+    institutes: [
+      "Pan African University Institute for Governance, Humanities and Social Sciences (PAUGHSS)",
+      "Pan African Institute for Development – West Africa (PAID-WA)",
+      "University of Yaoundé I",
+      "University of Buea",
     ],
 
     professional: [
@@ -42,10 +67,9 @@ export default function AdmissionsMenu() {
     ],
 
     international: [
-      "USA University Admissions",
-      "UK University Admissions",
-      "Canada University Admissions",
-      "Europe (EU) University Admissions",
+      "Catholic University of Central Africa (UCAC)",
+      "International University, Bamenda",
+      "Saint Monica University",
       "Personal Statement / Essay Coaching",
       "Recommendation Letter Strategy",
       "Standardized Test Planning (SAT, GRE, GMAT)",

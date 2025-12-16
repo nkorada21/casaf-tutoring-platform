@@ -1,14 +1,40 @@
 // src/components/Navbar/Navbar.jsx
 import { useState, useRef, useEffect } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import TutoringMenu from "./TutoringMenu";
 import AdmissionsMenu from "./AdmissionMenu";
 import TopBar from "./TopBar";
+import { logoutUser } from "../../api/auth";
 
 export default function Navbar() {
   const [openMenu, setOpenMenu] = useState(null); // "tutoring" | "admissions" | null
   const [mobileOpen, setMobileOpen] = useState(false);
   const navRef = useRef(null);
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const syncAuth = () => {
+      setIsLoggedIn(localStorage.getItem("isLoggedIn") === "true");
+    };
+    syncAuth();
+    window.addEventListener("storage", syncAuth);
+    return () => window.removeEventListener("storage", syncAuth);
+  }, []);
+
+  const handleLogout = async () => {
+    try {
+      await logoutUser();
+    } catch (e) {
+      console.error("Logout failed", e);
+    } finally {
+      localStorage.removeItem("isLoggedIn");
+      setIsLoggedIn(false);
+      setMobileOpen(false);
+      navigate("/login");
+    }
+  };
 
   // Close dropdowns when clicking outside
   useEffect(() => {
@@ -42,8 +68,8 @@ export default function Navbar() {
               CT
             </div>
             <div className="leading-tight hidden sm:block">
-              <div className="font-bold text-lg">CASAF Tutors</div>
-              <div className="text-xs text-gray-200">Cameroon After School</div>
+              <div className="font-bold text-lg">Tascam Co Ltd</div>
+              <div className="text-xs text-gray-200">Tutors After School Cameroon Limited</div>
             </div>
           </Link>
 
@@ -108,9 +134,14 @@ export default function Navbar() {
               </NavLink>
             </li>
             <li>
+              {!isLoggedIn ? (
               <NavLink to="/choose-login" className={activeLink}>
                 Log In
               </NavLink>
+              ) : (
+                <button onClick={handleLogout}
+                className="hover:text-orange-300 transition-colors text-sm font-semibold" > Logout </button>
+              )}
             </li>
 
             <li>
@@ -222,6 +253,7 @@ export default function Navbar() {
                 Pricing
               </NavLink>
 
+              {!isLoggedIn ? (
               <NavLink
                 to="/choose-login"
                 className={activeLink}
@@ -229,6 +261,10 @@ export default function Navbar() {
               >
                 Log In
               </NavLink>
+              ) : (
+                <button onClick={handleLogout}
+                className="text-left hover:text-orange-300 transition-colors text-sm font-semibold" > Logout </button>
+              )}
 
               <NavLink
                 to="/signup"

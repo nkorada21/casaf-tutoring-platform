@@ -7,10 +7,10 @@ export default function HeroProfs() {
         <div>
           {/* Headline */}
           <h1 className="text-4xl md:text-5xl font-extrabold text-[#1B1B1B] leading-tight">
-            CASAF Tutors{" "}
+            A Prescription for {" "}
             <span className="relative inline-block">
               <span className="absolute inset-0 bg-[#D6FF8F] rotate-[-2deg] px-1 py-1 rounded-md"></span>
-              <span className="relative">Get Results</span>
+              <span className="relative">Better Grades</span>
             </span>
           </h1>
 
