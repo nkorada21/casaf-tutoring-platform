@@ -1,100 +1,86 @@
 export const subjects = {
   A: [
-    "A Level Tutors",
-    "Accounting Tutors",
-    "Actuarial Science Tutors",
-    "Algebra Tutors",
-    "Anatomy Tutors",
-    "Anthropology Tutors",
-    "Arabic Tutors",
-    "Architecture Tutors",
-    "Art Tutors",
+    "ACCOUNTING",
+    "ADDITIONAL MATHS",
   ],
 
   B: [
-    "Biology Tutors",
-    "Business Tutors",
-    "Biomedical Tutors",
-    "Biochemistry Tutors",
-    "Botany Tutors",
-    "Business Management Tutors",
+    "BUSINESS MATHEMATICS",
+    "BIOLOGY",
+    "BUSINESS MANAGEMENT",
   ],
 
   C: [
-    "Chemistry Tutors",
-    "Computer Science Tutors",
-    "Civil Engineering Tutors",
-    "CIMA Tutors",
-    "Cryptocurrency Tutors",
-    "Creative Writing Tutors",
+    "COMMERCE",
+    "CHEMISTRY",
+    "COMPUTER SCIENCE",
+    "CITIZENSHIP",
+    "CORPORATE ACCOUNTING",
+    "COMMERCE AND FINANCE",
   ],
 
   D: [
-    "Data Science Tutors",
-    "Design Tutors",
-    "Drama Tutors",
-    "Dentistry Tutors",
+    "DIGITAL MARKETING",
   ],
 
   E: [
-    "Economics Tutors",
-    "Engineering Tutors",
-    "English Tutors",
-    "Environmental Science Tutors",
+    "ENGLISH LANGUAGE",
+    "ECONOMICS",
+    "ENTREPRENEURSHIP",
   ],
 
   F: [
-    "Finance Tutors",
-    "French Tutors",
-    "Film Studies Tutors",
+    "FRENCH",
+    "FOOD AND NUTRITION",
+    "FOOD SCIENCE",
+    "FINANCIAL ACCOUNTING",
+    "FURTHER MATHEMATICS",
   ],
 
   G: [
-    "Geography Tutors",
-    "Geology Tutors",
-    "German Tutors",
+    "GEOGRAPHY",
   ],
 
   H: [
-    "History Tutors",
-    "Human Resource Tutors",
-    "Health Science Tutors",
+    "HISTORY",
+    "HEALTH SCIENCE",
   ],
 
   I: [
-    "International Relations Tutors",
-    "IT Tutors",
-    "Information Systems Tutors",
+    "INTERNATIONAL FINANCIAL ACCOUNTING",
+    "ICT",
   ],
 
   M: [
-    "Mathematics Tutors",
-    "Medicine Tutors",
-    "Marketing Tutors",
-    "Microbiology Tutors",
+    "MATHEMATICS",
+    "MARKETING",
+    "MATHEMATICS WITH STATISTICS",
+    "MATHS WITH MECHANICS",
+    "MARKETING SKILLS",
+  ],
+
+  O: [
+    "OFFICE PRACTICE",
+    "OHADA FINANCIAL REPORTING",
+    "OHADA FINANCIAL ACCOUNTING",
   ],
 
   P: [
-    "Physics Tutors",
-    "Philosophy Tutors",
-    "Psychology Tutors",
-    "Programming Tutors",
+    "PHYSICS",
+    "PRODUCT MASTERY",
+    "PHILOSOPHY",
+    "PROFESSIONAL MARKETING PRACTICE",
   ],
 
   S: [
-    "Statistics Tutors",
-    "Sociology Tutors",
-    "Software Engineering Tutors",
+    "SALES METHODS AND COMMUNICATION",
   ],
 
   T: [
-    "Tutoring (General)",
-    "TOEFL Tutors",
-    "Test Prep Tutors",
+    "TEST PREP",
   ],
 
   W: [
-    "Writing Tutors",
-    "Web Development Tutors",
+    "WRITING AND LITERATURE",
   ],
 };

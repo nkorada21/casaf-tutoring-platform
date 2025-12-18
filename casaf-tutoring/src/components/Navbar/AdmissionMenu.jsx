@@ -9,7 +9,6 @@ export default function AdmissionsMenu() {
     {  key: "private_universities", label: "Private University Admissions" },
     { key: "institutes", label: "Pan-African Universities and Institutes" },
     { key: "international", label: "International Admissions" },
-    { key: "professional", label: "Professional & Competitive Exams" },
     { key: "support", label: "Scholarship & Application Support" },
   ];
 
@@ -57,23 +56,10 @@ export default function AdmissionsMenu() {
       "University of Buea",
     ],
 
-    professional: [
-      "ENS Entrance Exam Preparation",
-      "Nursing School Entrance Exam Prep",
-      "Polytech Entrance Prep",
-      "Public Service / Concours Preparation",
-      "Professional Masters Admissions",
-      "MBA & Business School Admissions",
-    ],
-
     international: [
       "Catholic University of Central Africa (UCAC)",
       "International University, Bamenda",
       "Saint Monica University",
-      "Personal Statement / Essay Coaching",
-      "Recommendation Letter Strategy",
-      "Standardized Test Planning (SAT, GRE, GMAT)",
-      "Visa Interview Preparation",
     ],
 
     support: [
@@ -82,8 +68,6 @@ export default function AdmissionsMenu() {
       "CV / Resume for Applications",
       "Study Plan & Gap Explanation Help",
       "Application Portal Guidance (online forms)",
-      "Offer Letter & Deferral Advice",
-      "Pre-departure Orientation & Checklist",
     ],
   };
 
