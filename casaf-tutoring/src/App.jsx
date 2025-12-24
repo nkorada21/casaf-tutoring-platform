@@ -2,6 +2,9 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import Home from "./pages/Home";
 import Footer from "./components/Footer";
+import Layout from "./components/Layout";
+import TutoringCategoryPage from "./pages/TutoringCategoryPage.jsx";
+import TutorProfilePage from "./pages/TutorProfilePage.jsx";
 
 // Auth pages
 import ChooseLogin from "./pages/auth/ChooseLogin";
@@ -23,6 +26,7 @@ import Dashboard from "./pages/dashboard/Dashboard";
 import SubjectsPage from "./pages/Subjects/SubjectsPage";
 import RequestTutorPage from "./pages/RequestTutor/RequestTutorPage";
 import PricingPage from "./pages/Pricing/PricingPage";
+import AdmissionsLandingPage from "./pages/AdmissionsLandingPage.jsx";
 
 export default function App() {
   return (
@@ -32,6 +36,14 @@ export default function App() {
       <Routes>
         {/* Home */}
         <Route path="/" element={<Home />} />
+
+        <Route element={<Layout />}>
+          {/* Dynamic tutoring pages */}
+          <Route path="/tutoring/:category" element={<TutoringCategoryPage />} />
+          <Route path="/tutor/:id" element={<TutorProfilePage />} />
+        </Route>
+
+        <Route path="/admissions/:category/:slug" element={<AdmissionsLandingPage />} />
 
         {/* Subjects Page Route */}
         <Route path="/subjects/all" element={<SubjectsPage />} />
@@ -61,6 +73,12 @@ export default function App() {
         <Route path="/admissions/postgraduate" element={<h1>Postgraduate Admissions</h1>} />
         <Route path="/admissions/medical" element={<h1>Medical Admissions</h1>} />
         <Route path="/admissions/us" element={<h1>US Admissions</h1>} />
+
+        <Route element={<Layout />}>
+          {/* Dynamic tutoring pages */}
+          <Route path="/tutoring/:category" element={<TutoringCategoryPage />} />
+          <Route path="/tutor/:id" element={<TutorProfilePage />} />
+        </Route>
 
         {/* Auth */}
         <Route path="/choose-login" element={<ChooseLogin />} />

@@ -1,12 +1,13 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function TutoringMenu() {
   const [activePanel, setActivePanel] = useState("school");
 
   const categories = [
-    { key: "school", label: "GCE O Level Subjects" },
-    { key: "high_school", label: "GCE A Level subjects" },
-    { key: "online", label: "Online & Remote Tutors" },
+    { key: "school", label: "GCE O Level Subjects", route: "/tutoring/gce-o-level"},
+    { key: "high_school", label: "GCE A Level subjects", route: "/tutoring/gce-a-level" },
+    { key: "online", label: "Online & Remote Tutors", route: "/tutoring/online-remote" },
   ];
 
   const subjects = {
@@ -62,14 +63,20 @@ export default function TutoringMenu() {
     online: [
       "Online Primary Tutors",
       "Online Secondary Tutors",
-      "Online University Tutors",
-      "Online Professional Course Tutors",
-      "Online Computer Science Tutors",
       "Online Mathematics Tutors",
       "Online Language Tutors",
-      "Online International Exam Prep",
     ],
   };
+
+  const slugify = (text) =>
+    text
+      .toLowerCase()
+      .replace(/ & /g, "-and-")
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/(^-|-$)+/g, "");
+
+  
+  const subjectRoute = (sub) => `/tutoring/${slugify(sub)}`;
 
   return (
     <div
@@ -90,8 +97,9 @@ export default function TutoringMenu() {
         </div>
 
         {categories.map((cat) => (
-          <button
+          <Link
             key={cat.key}
+            to={cat.route}
             onMouseEnter={() => setActivePanel(cat.key)}
             className={`
               w-full text-left px-5 py-3 text-sm rounded-r-lg
@@ -107,15 +115,15 @@ export default function TutoringMenu() {
           >
             <span>{cat.label}</span>
             <span className="text-xs">›</span>
-          </button>
+          </Link>
         ))}
 
         <div className="mt-3 border-t border-white/10 pt-3">
-          <a
-            href="/subjects/all" className="block px-5 py-2 text-sm text-orange-300 hover:text-orange-200"
+          <Link
+            to="/subjects/all" className="block px-5 py-2 text-sm text-orange-300 hover:text-orange-200"
           >
             See Full Subjects List →
-          </a>
+          </Link>
         </div>
       </div>
 
@@ -126,17 +134,14 @@ export default function TutoringMenu() {
         </h3>
 
         <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-10 text-sm">
-          {subjects[activePanel].map((sub, idx) => (
-            <li key={idx}>
-              <a
-                href={`/subjects/${activePanel}/${sub
-                  .toLowerCase()
-                  .replace(/ & /g, "-and-")
-                  .replace(/[^a-z0-9]+/g, "-")}`}
+          {subjects[activePanel].map((sub) => (
+            <li key={sub}>
+              <Link
+                to={subjectRoute(sub)}
                 className="hover:text-orange-300 transition-colors"
               >
                 {sub}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
