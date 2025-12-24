@@ -28,6 +28,13 @@ import RequestTutorPage from "./pages/RequestTutor/RequestTutorPage";
 import PricingPage from "./pages/Pricing/PricingPage";
 import AdmissionsLandingPage from "./pages/AdmissionsLandingPage.jsx";
 
+import ProtectedRoute from "./components/ProtectedRoute";
+import DashboardLayout from "./pages/dashboard/DashboardLayout";
+import DashboardHome from "./pages/dashboard/DashboardHome";
+import MyLessons from "./pages/dashboard/MyLessons";
+import Profile from "./pages/dashboard/Profile";
+import Settings from "./pages/dashboard/Settings";
+
 export default function App() {
   return (
     <>
@@ -89,7 +96,16 @@ export default function App() {
         <Route path="/email-sent" element={<EmailSent />} />
 
         {/* Dashboard */}
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/dashboard" element={
+          <ProtectedRoute>
+            <DashboardLayout />
+            </ProtectedRoute>
+          }>
+            <Route index element={<DashboardHome />} />
+            <Route path="lessons" element={<MyLessons />} />
+            <Route path="profile" element={<Profile />} />
+            <Route path="settings" element={<Settings />} />
+            </Route>
       </Routes>
 
       <Footer />

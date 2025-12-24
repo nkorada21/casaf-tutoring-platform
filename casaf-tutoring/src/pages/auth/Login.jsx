@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { loginUser } from "../../api/auth";
@@ -12,7 +13,7 @@ export default function Login() {
   const location = useLocation();
   const navigate = useNavigate();
 
-  // read ?type=tuition or ?type=consultancy
+  // Determine login type from URL query params
   const params = new URLSearchParams(location.search);
   const type = params.get("type") || "tuition";
 
@@ -22,19 +23,33 @@ export default function Login() {
     setLoading(true);
 
     try {
-      const res = await loginUser({ email, password, type });
-      // You could store res.data.user in context if needed
+      // Call backend login
+      const res = await loginUser({ email, password });
 
-      localStorage.setItem("isLoggedIn", "true");
-      localStorage.setItem("user", JSON.stringify(res.user));
+      // Extract user from various possible response structures
+      const user =
+        res?.user ||
+        res?.data?.user ||
+        res?.data?.data?.user ||
+        res?.result?.user ||
+        null;
 
-      setAuthUser(res.user || res.data?.user || { email })
+      if (!user) {
+        // If no user object, throw error to be caught below
+        setAuthUser({ email });
+      } else {
+        setAuthUser(user);
+      }
 
-      navigate("/dashboard"); // later you can split by role
+      // Redirect to dashboard after successful login
+      navigate("/dashboard");
     } catch (err) {
-      setError(
-        err.response?.data?.message || "Something went wrong. Please try again."
-      );
+      // Handle errors
+      const msg =
+        err?.response?.data?.message ||
+        err?.response?.data?.error ||
+        "Login failed. Please check email/password and try again.";
+      setError(msg);
     } finally {
       setLoading(false);
     }
@@ -43,7 +58,6 @@ export default function Login() {
   return (
     <div className="min-h-screen bg-[#F9EDE3] flex justify-center items-center px-4">
       <div className="bg-white rounded-xl shadow-lg p-10 max-w-lg w-full text-center">
-
         {/* Logo */}
         <div className="flex justify-center mb-6">
           <div className="bg-[#252952] rounded-2xl px-8 py-4">
@@ -60,9 +74,7 @@ export default function Login() {
           Welcome back
         </h2>
 
-        {error && (
-          <p className="text-red-500 text-sm mb-4">{error}</p>
-        )}
+        {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
 
         <form onSubmit={handleSubmit} className="space-y-4 text-left">
           <div>
@@ -75,6 +87,7 @@ export default function Login() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
+              autoComplete="email"
             />
           </div>
 
@@ -88,6 +101,7 @@ export default function Login() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
+              autoComplete="current-password"
             />
           </div>
 

@@ -1,40 +1,33 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { logoutUser } from "../api/auth";
-import axios from "axios";
 
 const AuthContext = createContext(null);
 
-const API = import.meta.env.VITE_BACKEND_URL;
-
 export function AuthProvider({ children }) {
-  const [user, setUser] = useState(null);
-  const [loadingAuth, setLoadingAuth] = useState(true);
-
-  const fetchMe = async () => {
-    try {
-      const res = await axios.get(`${API}/api/auth/me`, { withCredentials: true });
-      setUser(res.data);
-    } catch {
-      setUser(null);
-    } finally {
-      setLoadingAuth(false);
-    }
-  };
+  const [user, setUser] = useState(null); // { id, name, email, role }
 
   useEffect(() => {
-    fetchMe();
+    const saved = localStorage.getItem("casaf_user");
+    if (saved) setUser(JSON.parse(saved));
   }, []);
 
-  const logout = async () => {
-    await logoutUser();
+  const login = (userObj) => {
+    setUser(userObj);
+    localStorage.setItem("casaf_user", JSON.stringify(userObj));
+  };
+
+  const logout = () => {
     setUser(null);
+    localStorage.removeItem("casaf_user");
+    localStorage.removeItem("casaf_token"); // also clear token on logout
   };
 
   return (
-    <AuthContext.Provider value={{ user, setUser, loadingAuth, fetchMe, logout }}>
+    <AuthContext.Provider value={{ user, isLoggedIn: !!user, login, logout }}>
       {children}
     </AuthContext.Provider>
   );
 }
 
-export const useAuth = () => useContext(AuthContext);
+export function useAuth() {
+  return useContext(AuthContext);
+}

@@ -1,16 +1,33 @@
+
 import axios from "axios";
 
 // Backend URL from .env
 const API = import.meta.env.VITE_BACKEND_URL;
 
+if (!API) {
+  // Ensure the backend URL is set
+  throw new Error("VITE_BACKEND_URL is missing in your .env file");
+}
+
 // Axios instance
 const api = axios.create({
-  baseURL: API,
+  baseURL: API, // e.g. https://casaf-tutoring-backend.vercel.app
   withCredentials: true,
   headers: {
     "Content-Type": "application/json",
   },
 });
+
+// Response interceptor for error handling
+api.interceptors.response.use(
+  (res) => res,
+  (err) => {
+    const status = err?.response?.status;
+    const msg = err?.response?.data?.message || err?.message;
+    console.error("API ERROR:", status, msg, err?.response?.data);
+    return Promise.reject(err);
+  }
+);
 
 // REGISTER
 export const registerUser = async (userData) => {
@@ -19,8 +36,8 @@ export const registerUser = async (userData) => {
 };
 
 // LOGIN
-export const loginUser = async (userData) => {
-  const response = await api.post("/api/auth/login", userData);
+export const loginUser = async ({ email, password }) => {
+  const response = await api.post("/api/auth/login", { email, password });
   return response.data;
 };
 
@@ -43,8 +60,8 @@ export const forgotPassword = async (email) => {
 };
 
 // RESET PASSWORD
-export const resetPassword = async ({email, token, newPassword}) => {
-  const response = await api.post("/api/auth/reset-password/", {
+export const resetPassword = async ({ email, token, newPassword }) => {
+  const response = await api.post("/api/auth/reset-password", {
     email,
     token,
     newPassword,
