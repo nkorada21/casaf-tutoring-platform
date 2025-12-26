@@ -58,15 +58,38 @@ export const registerUser = async (userData) => {
   return res.data;
 };
 
-// LOGIN
+// LOGIN (PRODUCTION-SAFE FOR VERCEL)
 export const loginUser = async ({ email, password, type }) => {
-  const res = await api.post("/api/auth/login", { email, password, type });
-  const payload = res.data;
+  const body = { email, password, type };
 
-  return {
-    ...payload,
-    user: normalizeUser(payload),
-  };
+  try {
+    // First attempt
+    const res = await api.post("/api/auth/login", body);
+    const payload = res.data;
+
+    return {
+      ...payload,
+      user: normalizeUser(payload),
+    };
+  } catch (err) {
+    const status = err?.response?.status;
+
+    // Retry ONCE if backend is cold (500 / 502 / 503)
+    if (status >= 500) {
+      await new Promise((resolve) => setTimeout(resolve, 800));
+
+      const retryRes = await api.post("/api/auth/login", body);
+      const retryPayload = retryRes.data;
+
+      return {
+        ...retryPayload,
+        user: normalizeUser(retryPayload),
+      };
+    }
+
+    // Any other error (400, 401, etc.)
+    throw err;
+  }
 };
 
 // LOGOUT
