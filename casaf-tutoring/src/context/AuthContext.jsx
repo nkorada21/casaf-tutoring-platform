@@ -1,33 +1,66 @@
-import { createContext, useContext, useEffect, useState } from "react";
+// src/context/AuthContext.jsx
+import { createContext, useContext, useEffect, useMemo, useState } from "react";
+import { getAuthUser, setAuthUser, clearAuthUser } from "../utils/authStorage";
 
 const AuthContext = createContext(null);
 
 export function AuthProvider({ children }) {
-  const [user, setUser] = useState(null); // { id, name, email, role }
+  // load user from localStorage immediately
+  const [user, setUser] = useState(() => getAuthUser());
+  const [loading, setLoading] = useState(true);
 
+  // finish initial load (prevents Navbar flicker)
   useEffect(() => {
-    const saved = localStorage.getItem("casaf_user");
-    if (saved) setUser(JSON.parse(saved));
+    setLoading(false);
   }, []);
 
+  // keep app in sync without refresh
+  // - authChanged: dispatched by authStorage.js after login/logout
+  // - storage: sync across tabs/windows
+  useEffect(() => {
+    const sync = () => setUser(getAuthUser());
+
+    sync();
+    window.addEventListener("authChanged", sync);
+    window.addEventListener("storage", sync);
+
+    return () => {
+      window.removeEventListener("authChanged", sync);
+      window.removeEventListener("storage", sync);
+    };
+  }, []);
+
+  // login method used by Login.jsx
   const login = (userObj) => {
     setUser(userObj);
-    localStorage.setItem("casaf_user", JSON.stringify(userObj));
+    setAuthUser(userObj); // also dispatches authChanged
   };
 
+  // logout method used by Navbar.jsx
   const logout = () => {
     setUser(null);
-    localStorage.removeItem("casaf_user");
-    localStorage.removeItem("casaf_token"); // also clear token on logout
+    clearAuthUser(); // also dispatches authChanged
+
+    // Optional: if you store tokens anywhere
+    localStorage.removeItem("casaf_token");
   };
 
-  return (
-    <AuthContext.Provider value={{ user, isLoggedIn: !!user, login, logout }}>
-      {children}
-    </AuthContext.Provider>
+  const value = useMemo(
+    () => ({
+      user,
+      isLoggedIn: !!user,
+      loading, // important for Navbar (avoid flashing)
+      login,
+      logout,
+    }),
+    [user, loading]
   );
+
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
 
 export function useAuth() {
-  return useContext(AuthContext);
+  const ctx = useContext(AuthContext);
+  if (!ctx) throw new Error("useAuth must be used inside <AuthProvider />");
+  return ctx;
 }

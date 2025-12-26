@@ -1,8 +1,7 @@
-
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { loginUser } from "../../api/auth";
-import { setAuthUser } from "../../utils/authStorage";
+import { useAuth } from "../../context/AuthContext.jsx";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -10,55 +9,53 @@ export default function Login() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
+  const submittingRef = useRef(false); // hard lock
   const location = useLocation();
   const navigate = useNavigate();
+  const { login } = useAuth();
 
-  // Determine login type from URL query params
   const params = new URLSearchParams(location.search);
-  const type = params.get("type") || "tuition";
+  const type = params.get("type") || "tuition"; // keep if backend uses it
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // prevents double submit 100%
+    if (submittingRef.current) return;
+    submittingRef.current = true;
+
     setError("");
     setLoading(true);
 
     try {
-      // Call backend login
-      const res = await loginUser({ email, password });
+      const res = await loginUser({ email, password, type });
 
-      // Extract user from various possible response structures
-      const user =
-        res?.user ||
-        res?.data?.user ||
-        res?.data?.data?.user ||
-        res?.result?.user ||
-        null;
+      // normalize response safely
+      const userObj = res?.user || res?.data?.user || res?.data || null;
 
-      if (!user) {
-        // If no user object, throw error to be caught below
-        setAuthUser({ email });
-      } else {
-        setAuthUser(user);
+      if (!userObj) {
+        throw new Error("Login succeeded but user data was missing.");
       }
 
-      // Redirect to dashboard after successful login
+      // only ONE source of truth: AuthContext
+      login(userObj);
+
       navigate("/dashboard");
     } catch (err) {
-      // Handle errors
       const msg =
         err?.response?.data?.message ||
-        err?.response?.data?.error ||
-        "Login failed. Please check email/password and try again.";
+        err?.message ||
+        "Login failed. Please try again.";
       setError(msg);
     } finally {
       setLoading(false);
+      submittingRef.current = false; // unlock
     }
   };
 
   return (
     <div className="min-h-screen bg-[#F9EDE3] flex justify-center items-center px-4">
       <div className="bg-white rounded-xl shadow-lg p-10 max-w-lg w-full text-center">
-        {/* Logo */}
         <div className="flex justify-center mb-6">
           <div className="bg-[#252952] rounded-2xl px-8 py-4">
             <div className="text-2xl font-bold text-white">CASAF Tutors</div>
@@ -117,6 +114,7 @@ export default function Login() {
         <button
           onClick={() => navigate("/forgot-password")}
           className="text-sm mt-4 text-orange-600 hover:underline"
+          disabled={loading}
         >
           Having trouble logging in?
         </button>
@@ -126,6 +124,7 @@ export default function Login() {
           <button
             onClick={() => navigate("/signup")}
             className="text-orange-600 hover:underline"
+            disabled={loading}
           >
             Create one
           </button>

@@ -1,70 +1,105 @@
-
 import axios from "axios";
 
-// Backend URL from .env
-const API = import.meta.env.VITE_BACKEND_URL;
+/**
+ * Backend URL from .env
+ * Example: VITE_BACKEND_URL=https://casaf-tutoring-backend.vercel.app
+ */
+const RAW_API = import.meta.env.VITE_BACKEND_URL;
 
-if (!API) {
-  // Ensure the backend URL is set
-  throw new Error("VITE_BACKEND_URL is missing in your .env file");
-}
+// Don’t crash app at import time.
+// Remove trailing slash to avoid double-slash bugs.
+const API = (RAW_API || "").trim().replace(/\/+$/, "");
 
-// Axios instance
+// Create Axios instance
 const api = axios.create({
-  baseURL: API, // e.g. https://casaf-tutoring-backend.vercel.app
-  withCredentials: true,
+  baseURL: API,              // e.g. https://... (no trailing slash)
+  withCredentials: true,     // ok even if you don't use cookies
+  timeout: 20000,
   headers: {
     "Content-Type": "application/json",
   },
 });
 
-// Response interceptor for error handling
+// Helper: readable error
+const getErrorMessage = (err) => {
+  const data = err?.response?.data;
+  const msg = data?.message || data?.error || err?.message || "Unknown API error";
+  return typeof msg === "string" ? msg : JSON.stringify(msg);
+};
+
+// Request interceptor: fail only when request is made
+api.interceptors.request.use((config) => {
+  if (!API) {
+    throw new Error("VITE_BACKEND_URL is missing in your .env file");
+  }
+  return config;
+});
+
+// Response interceptor: clean logs
 api.interceptors.response.use(
   (res) => res,
   (err) => {
-    const status = err?.response?.status;
-    const msg = err?.response?.data?.message || err?.message;
-    console.error("API ERROR:", status, msg, err?.response?.data);
+    console.error("API ERROR:", err?.response?.status, getErrorMessage(err), err?.response?.data);
     return Promise.reject(err);
   }
 );
 
+/**
+ * Normalize backend response so frontend always gets user consistently.
+ */
+const normalizeUser = (payload) => {
+  if (!payload) return null;
+  return payload.user || payload.data?.user || payload.result?.user || null;
+};
+
 // REGISTER
 export const registerUser = async (userData) => {
-  const response = await api.post("/api/auth/register", userData);
-  return response.data;
+  const res = await api.post("/api/auth/register", userData);
+  return res.data;
 };
 
 // LOGIN
-export const loginUser = async ({ email, password }) => {
-  const response = await api.post("/api/auth/login", { email, password });
-  return response.data;
+export const loginUser = async ({ email, password, type }) => {
+  const res = await api.post("/api/auth/login", { email, password, type });
+  const payload = res.data;
+
+  return {
+    ...payload,
+    user: normalizeUser(payload),
+  };
 };
 
 // LOGOUT
 export const logoutUser = async () => {
-  const response = await api.post("/api/auth/logout");
-  return response.data;
+  const res = await api.post("/api/auth/logout");
+  return res.data;
 };
 
 // CHECK AUTH STATUS
 export const checkAuth = async () => {
-  const response = await api.get("/api/auth/status");
-  return response.data;
+  const res = await api.get("/api/auth/status");
+  const payload = res.data;
+
+  return {
+    ...payload,
+    user: normalizeUser(payload),
+  };
 };
 
 // FORGOT PASSWORD
 export const forgotPassword = async (email) => {
-  const response = await api.post("/api/auth/forgot-password", { email });
-  return response.data;
+  const res = await api.post("/api/auth/forgot-password", { email });
+  return res.data;
 };
 
 // RESET PASSWORD
 export const resetPassword = async ({ email, token, newPassword }) => {
-  const response = await api.post("/api/auth/reset-password", {
+  const res = await api.post("/api/auth/reset-password", {
     email,
     token,
     newPassword,
   });
-  return response.data;
+  return res.data;
 };
+
+export default api;
