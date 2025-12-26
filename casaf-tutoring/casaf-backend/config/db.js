@@ -22,6 +22,10 @@ const connectDB = async () => {
       .connect(uri, {
         // optional but helps stability
         bufferCommands: false,
+        serverSelectionTimeoutMS: 10000,
+        socketTimeoutMS: 45000,
+      // maxPoolSize helps with serverless bursts
+        maxPoolSize: 10,
       })
       .then((mongoose) => mongoose);
   }
