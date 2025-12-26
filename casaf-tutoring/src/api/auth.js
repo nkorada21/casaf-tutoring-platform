@@ -12,8 +12,8 @@ const API = (RAW_API || "").trim().replace(/\/+$/, "");
 
 // Create Axios instance
 const api = axios.create({
-  baseURL: API,              // e.g. https://... (no trailing slash)
-  withCredentials: true,     // ok even if you don't use cookies
+  baseURL: API, // e.g. https://... (no trailing slash)
+  withCredentials: true, // ok even if you don't use cookies
   timeout: 20000,
   headers: {
     "Content-Type": "application/json",
@@ -23,7 +23,11 @@ const api = axios.create({
 // Helper: readable error
 const getErrorMessage = (err) => {
   const data = err?.response?.data;
-  const msg = data?.message || data?.error || err?.message || "Unknown API error";
+  const msg =
+    data?.message ||
+    data?.error ||
+    err?.message ||
+    "Unknown API error";
   return typeof msg === "string" ? msg : JSON.stringify(msg);
 };
 
@@ -39,7 +43,12 @@ api.interceptors.request.use((config) => {
 api.interceptors.response.use(
   (res) => res,
   (err) => {
-    console.error("API ERROR:", err?.response?.status, getErrorMessage(err), err?.response?.data);
+    console.error(
+      "API ERROR:",
+      err?.response?.status,
+      getErrorMessage(err),
+      err?.response?.data
+    );
     return Promise.reject(err);
   }
 );
@@ -52,6 +61,12 @@ const normalizeUser = (payload) => {
   return payload.user || payload.data?.user || payload.result?.user || null;
 };
 
+/**
+ * Retry helper (cold start)
+ */
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+const shouldRetryColdStart = (status) => [500, 502, 503, 504].includes(status);
+
 // REGISTER
 export const registerUser = async (userData) => {
   const res = await api.post("/api/auth/register", userData);
@@ -59,35 +74,26 @@ export const registerUser = async (userData) => {
 };
 
 // LOGIN (PRODUCTION-SAFE FOR VERCEL)
-export const loginUser = async ({ email, password, type }) => {
-  const body = { email, password, type };
+export const loginUser = async ({ email, password, type } = {}) => {
+  // Build body safely
+  const body = { email, password };
+  if (type) body.type = type;
 
   try {
-    // First attempt
     const res = await api.post("/api/auth/login", body);
     const payload = res.data;
-
-    return {
-      ...payload,
-      user: normalizeUser(payload),
-    };
+    return { ...payload, user: normalizeUser(payload) };
   } catch (err) {
     const status = err?.response?.status;
 
-    // Retry ONCE if backend is cold (500 / 502 / 503)
-    if (status >= 500) {
-      await new Promise((resolve) => setTimeout(resolve, 800));
-
+    // Retry ONCE if serverless is cold
+    if (shouldRetryColdStart(status)) {
+      await sleep(800);
       const retryRes = await api.post("/api/auth/login", body);
       const retryPayload = retryRes.data;
-
-      return {
-        ...retryPayload,
-        user: normalizeUser(retryPayload),
-      };
+      return { ...retryPayload, user: normalizeUser(retryPayload) };
     }
 
-    // Any other error (400, 401, etc.)
     throw err;
   }
 };
@@ -102,11 +108,7 @@ export const logoutUser = async () => {
 export const checkAuth = async () => {
   const res = await api.get("/api/auth/status");
   const payload = res.data;
-
-  return {
-    ...payload,
-    user: normalizeUser(payload),
-  };
+  return { ...payload, user: normalizeUser(payload) };
 };
 
 // FORGOT PASSWORD
