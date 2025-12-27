@@ -1,4 +1,4 @@
-// src/context/AuthContext.jsx
+
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import { getAuthUser, setAuthUser, clearAuthUser } from "../utils/authStorage";
 

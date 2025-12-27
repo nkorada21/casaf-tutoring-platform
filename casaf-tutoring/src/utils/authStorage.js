@@ -1,12 +1,12 @@
 const USER_KEY = "casaf_user";
-const LOGIN_KEY = "isLoggedIn";
 
 /**
  * Get authenticated user safely
+ * Uses sessionStorage → auto logout when tab/browser closes
  */
 export const getAuthUser = () => {
   try {
-    const raw = localStorage.getItem(USER_KEY);
+    const raw = sessionStorage.getItem(USER_KEY);
     return raw ? JSON.parse(raw) : null;
   } catch (err) {
     console.error("Failed to parse auth user:", err);
@@ -20,10 +20,9 @@ export const getAuthUser = () => {
 export const setAuthUser = (user) => {
   if (!user) return;
 
-  localStorage.setItem(USER_KEY, JSON.stringify(user));
-  localStorage.setItem(LOGIN_KEY, "true");
+  sessionStorage.setItem(USER_KEY, JSON.stringify(user));
 
-  // notify Navbar / app instantly
+  // Notify Navbar / AuthContext immediately
   window.dispatchEvent(new Event("authChanged"));
 };
 
@@ -31,16 +30,15 @@ export const setAuthUser = (user) => {
  * Clear authentication completely and notify app
  */
 export const clearAuthUser = () => {
-  localStorage.removeItem(USER_KEY);
-  localStorage.removeItem(LOGIN_KEY);
+  sessionStorage.removeItem(USER_KEY);
 
-  // notify Navbar / app instantly
+  // Notify Navbar / AuthContext immediately
   window.dispatchEvent(new Event("authChanged"));
 };
 
 /**
- * Simple helper (optional but useful)
+ * Helper: derive login state from user
  */
 export const isLoggedIn = () => {
-  return localStorage.getItem(LOGIN_KEY) === "true";
+  return !!getAuthUser();
 };
